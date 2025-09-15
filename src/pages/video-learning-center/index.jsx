@@ -9,8 +9,8 @@ import RelatedVideos from "./components/RelatedVideos";
 import Icon from "../../components/AppIcon";
 import Image from "../../components/AppImage";
 
-const API_KEY = import.meta.env.VERCEL_YT_API_KEY;
-const CHANNEL_ID = import.meta.env.VERCEL_YT_CHANNEL_ID;
+const API_KEY = import.meta.env.VITE_YT_API_KEY;
+const CHANNEL_ID = import.meta.env.VITE_YT_CHANNEL_ID;
 
 const VideoLearningCenter = () => {
   const [searchTerm, setSearchTerm] = useState("");
