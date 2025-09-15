@@ -73,7 +73,7 @@ const Header = () => {
                 <img src="/assets/images/logo.png" alt="log" className="w-20" />
               </div>
               <span className="font-heading font-semibold text-lg text-foreground">
-                Maths for All
+                Mathematics for All
               </span>
             </Link>
 

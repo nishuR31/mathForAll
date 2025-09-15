@@ -83,7 +83,7 @@ const VisionMissionSection = () => {
           <div className="flex justify-center">
             <div className="flex items-center text-muted-foreground">
               <Icon name="Quote" size={20} className="mr-2" />
-              <span className="font-medium">Dr. Michael Thompson</span>
+              <span className="font-medium">Dr. Samir Kumar Pandey</span>
             </div>
           </div>
         </div>

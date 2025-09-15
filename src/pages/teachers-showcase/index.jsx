@@ -19,8 +19,7 @@ const TeachersShowcase = () => {
       title: "Senior Mathematics Professor",
       education: "Ph.D. in Mathematics, MIT",
       experience: 15,
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
+      image: "/assets/images/samirsir.JPG",
       specializations: ["Calculus", "Linear Algebra", "Real Analysis"],
       bio: "Dr. Samir has been teaching mathematics for over 15 years with a focus on making complex mathematical concepts accessible to students of all levels.",
       philosophy:

@@ -1,17 +1,17 @@
-import React from 'react';
-import Image from '../../../components/AppImage';
-import Icon from '../../../components/AppIcon';
+import React from "react";
+import Image from "../../../components/AppImage";
+import Icon from "../../../components/AppIcon";
 
 const TeacherCard = ({ teacher }) => {
   return (
     <div className="bg-card border border-border rounded-lg p-6 shadow-soft hover:shadow-elevated transition-smooth">
       <div className="flex flex-col items-center text-center">
         {/* Profile Image */}
-        <div className="w-24 h-24 mb-4 overflow-hidden rounded-full">
+        <div className="w-24 h-30 mb-4 overflow-hidden  ">
           <Image
             src={teacher?.image}
             alt={`${teacher?.name} - Mathematics Teacher`}
-            className="w-full h-full object-cover"
+            className=" object-cover"
           />
         </div>
 
@@ -19,9 +19,7 @@ const TeacherCard = ({ teacher }) => {
         <h3 className="text-xl font-heading font-semibold text-foreground mb-1">
           {teacher?.name}
         </h3>
-        <p className="text-sm text-muted-foreground mb-3">
-          {teacher?.title}
-        </p>
+        <p className="text-sm text-muted-foreground mb-3">{teacher?.title}</p>
 
         {/* Education */}
         <div className="flex items-center text-sm text-secondary mb-4">
@@ -37,7 +35,9 @@ const TeacherCard = ({ teacher }) => {
 
         {/* Specializations */}
         <div className="mb-4">
-          <h4 className="text-sm font-medium text-foreground mb-2">Specializations:</h4>
+          <h4 className="text-sm font-medium text-foreground mb-2">
+            Specializations:
+          </h4>
           <div className="flex flex-wrap gap-2 justify-center">
             {teacher?.specializations?.map((spec, index) => (
               <span
@@ -78,7 +78,11 @@ const TeacherCard = ({ teacher }) => {
             <ul className="text-sm text-muted-foreground space-y-1">
               {teacher?.certifications?.map((cert, index) => (
                 <li key={index} className="flex items-center">
-                  <Icon name="CheckCircle" size={12} className="mr-2 text-success" />
+                  <Icon
+                    name="CheckCircle"
+                    size={12}
+                    className="mr-2 text-success"
+                  />
                   {cert}
                 </li>
               ))}

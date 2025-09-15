@@ -19,7 +19,22 @@ const VideoLearningCenter = () => {
   const [filteredVideos, setFilteredVideos] = useState([]);
 
   // Channel Information - Updated with the Maths 4 All branding
-  const [channelInfo, setChannelInfo] = useState(null);
+  const [channelInfo, setChannelInfo] = useState({
+    name: "Mathematics For All",
+    handle: "@mathematicsforall9108",
+    owner: "Samir Kumar Pandey",
+    channelId: CHANNEL_ID,
+    title: "Loading",
+    description: "Loading",
+    avatar: "/assets/images/logo.png",
+    subscriberCount: "Loading",
+    videoCount: "Loading",
+    banner: [
+      "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=1200&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=120&h=30&fit=crop",
+    ],
+  });
+
   useEffect(() => {
     const fetchChannelInfo = async () => {
       try {
@@ -27,26 +42,41 @@ const VideoLearningCenter = () => {
           `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${CHANNEL_ID}&key=${API_KEY}`
         );
         const data = await res.json();
-        console.table(data);
+
         const channel = data.items[0];
 
         setChannelInfo({
           name: "Mathematics For All",
           handle: "@mathematicsforall9108",
           owner: "Samir Kumar Pandey",
-          channelId: channel.id,
-          id: "UCAbXT1aYSDiXHHkakobyLsg",
-          title: channel.snippet.title,
-          description: channel.snippet.description,
-          avatar:
-            channel.snippet.thumbnails.high.url ?? "/assets/images/logo.png",
-          subscriberCount: channel.statistics.subscriberCount,
-          videoCount: channel.statistics.videoCount,
+          channelId: channel?.id ?? CHANNEL_ID,
+          title: channel?.snippet.title,
+          description: channel?.snippet?.description,
+          avatar: "/assets/images/logo.png",
+          subscriberCount: channel?.statistics?.subscriberCount,
+          videoCount: channel?.statistics?.videoCount,
           banner: [
             "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=1200&h=300&fit=crop",
             "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=120&h=30&fit=crop",
           ],
         });
+        // setChannelInfo({
+        //   name: "Mathematics For All",
+        //   handle: "@mathematicsforall9108",
+        //   owner: "Samir Kumar Pandey",
+        //   channelId: channel?.id ?? CHANNEL_ID,
+        //   title: channel?.snippet.title,
+        //   description: channel?.snippet?.description,
+        //   avatar: "/assets/images/logo.png",
+        //   subscriberCount: channel?.statistics?.subscriberCount,
+        //   videoCount: channel?.statistics?.videoCount,
+        //   banner: [
+        //     "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=1200&h=300&fit=crop",
+        //     "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=120&h=30&fit=crop",
+        //   ],
+        // });
+        console.log("channel data fetched");
+        console.table(data.items[0]);
       } catch (error) {
         console.error("Error fetching channel info:", error);
       }
@@ -85,8 +115,11 @@ const VideoLearningCenter = () => {
     const fetchVideos = async () => {
       try {
         const res = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelInfo.channelId}&part=snippet,id&order=date&maxResults=20`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${
+            channelInfo.channelId ?? CHANNEL_ID
+          }&part=snippet,id&order=date&maxResults=10`
         );
+
         const data = await res.json();
 
         const formattedVideos = data.items.map((item, idx) => ({
@@ -98,6 +131,8 @@ const VideoLearningCenter = () => {
           publishedAt: item.snippet.publishedAt,
           topic: "General", // you can map topics later
         }));
+
+        console.table(data.items);
 
         setChannelVideos(formattedVideos);
         setFilteredVideos(formattedVideos);
@@ -413,9 +448,18 @@ const VideoLearningCenter = () => {
                       className="text-muted-foreground"
                     />
                   </div>
-                  <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
-                    No videos found
-                  </h3>
+
+                  <div className=" bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Icon
+                      name="Loader"
+                      size={30}
+                      className="text-muted-foreground animate-spin"
+                    />
+                    <h3 className="pl-10 pt-3 font-heading text-center font-semibold text-lg text-foreground mb-2">
+                      {" "}
+                      No videos found
+                    </h3>
+                  </div>
                   <p className="text-muted-foreground mb-4">
                     Try adjusting your search terms or browse by topic
                   </p>
@@ -505,9 +549,9 @@ const VideoLearningCenter = () => {
                 <div className="text-center mt-8">
                   <div className="mb-4">
                     <Image
-                      src="/assets/images/samir_sir-1757762546712.png"
-                      alt="Maths 4 All Logo"
-                      className="w-20 h-20 mx-auto mb-4 rounded-2xl object-contain bg-white"
+                      src="/assets/images/samirsir.JPG"
+                      alt="Mathematics All Logo"
+                      className="w-[300px] h-[300px] mx-auto mb-4 rounded-2xl object-contain bg-transparent"
                     />
                     <p className="text-foreground font-medium mb-2">
                       Created and taught by{" "}

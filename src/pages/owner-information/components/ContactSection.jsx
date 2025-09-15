@@ -13,20 +13,6 @@ const ContactSection = () => {
 
   const socialLinks = [
     {
-      platform: "LinkedIn",
-      icon: "Linkedin",
-      url: "https://linkedin.com/in/michael-thompson-math",
-      color: "text-blue-600",
-      description: "Professional updates and educational insights",
-    },
-    {
-      platform: "Twitter",
-      icon: "Twitter",
-      url: "https://twitter.com/mathsforall_edu",
-      color: "text-blue-400",
-      description: "Daily math tips and platform updates",
-    },
-    {
       platform: "YouTube",
       icon: "Youtube",
       url: "https://www.youtube.com/@mathematicsforall9108",
@@ -36,7 +22,7 @@ const ContactSection = () => {
     {
       platform: "GitHub",
       icon: "Github",
-      url: "https://github.com/nishuR31",
+      url: "https://github.com/nishuR31/mathsForAll",
       color: "text-gray-800",
       description: "Open source contributions and platform code",
     },

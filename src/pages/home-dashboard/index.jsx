@@ -18,7 +18,7 @@ const HomeDashboard = () => {
     <>
       <Helmet>
         <title>
-          Home Dashboard - Maths for All | Free Mathematics Education
+          Home Dashboard - Mathematics for All | Free Mathematics Education
         </title>
         <meta
           name="description"
@@ -74,7 +74,7 @@ const HomeDashboard = () => {
                     />
                   </div>
                   <span className="font-heading font-semibold text-lg text-foreground">
-                    Maths for All
+                    Mathematics for All
                   </span>
                 </div>
                 <p className="text-muted-foreground mb-4 max-w-md">
@@ -164,7 +164,7 @@ const HomeDashboard = () => {
 
             <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
               <p>
-                &copy; {new Date()?.getFullYear()} Maths for All. All rights
+                &copy; {new Date()?.getFullYear()} Mathematics for All. All rights
                 reserved. Made with ❤️ for education.
               </p>
             </div>

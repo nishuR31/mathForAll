@@ -5,7 +5,7 @@ const UsageGuideSection = () => {
   const guideSteps = [
     {
       id: 1,
-      title: "Getting Started with Maths for All",
+      title: "Getting Started with Mathematics for All",
       icon: "Home",
       steps: [
         "Visit the Home page to see featured notes and videos",

@@ -23,7 +23,7 @@ const HeroSection = () => {
           <h1 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6">
             Mathematics for
             <span className="text-primary block lg:inline lg:ml-3">
-              Everyone
+              All
             </span>
           </h1>
 
