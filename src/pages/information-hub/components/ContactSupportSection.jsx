@@ -34,7 +34,7 @@ const ContactSupportSection = () => {
       title: "Return to Learning",
       description: "Go back to exploring our notes and videos to continue your mathematics journey.",
       icon: "Home",
-      link: "/home-dashboard",
+      link: "/",
       actionType: "primary"
     }
   ];

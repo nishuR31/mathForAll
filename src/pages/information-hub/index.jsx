@@ -109,7 +109,7 @@ const InformationHub = () => {
                   Watch Videos
                 </a>
                 <a 
-                  href="/home-dashboard" 
+                  href="/" 
                   className="inline-flex items-center px-6 py-3 border border-border text-foreground rounded-lg hover:bg-muted transition-smooth font-medium"
                 >
                   <Icon name="Home" size={20} className="mr-2" />
