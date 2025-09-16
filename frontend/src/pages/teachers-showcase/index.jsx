@@ -19,7 +19,7 @@ const TeachersShowcase = () => {
       title: "Senior Mathematics Professor",
       education: "Ph.D. in Mathematics, MIT",
       experience: 15,
-      image: "/assets/images/samirsir.JPG",
+      image: ["/assets/images/sir.jpg", "/assets/images/samirsir.JPG"],
       specializations: ["Calculus", "Linear Algebra", "Real Analysis"],
       bio: "Dr. Samir has been teaching mathematics for over 15 years with a focus on making complex mathematical concepts accessible to students of all levels.",
       philosophy:
@@ -68,7 +68,7 @@ const TeachersShowcase = () => {
   return (
     <>
       <Helmet>
-        <title>Teachers Showcase - Maths for All</title>
+        <title>Teachers Showcase - Mathematics for All</title>
         <meta
           name="description"
           content="Meet our expert mathematics teachers and their specializations. Learn about our qualified educators who make mathematics accessible to all students."

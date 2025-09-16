@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "../../../components/AppImage";
 import Icon from "../../../components/AppIcon";
 
 const PersonalIntroSection = () => {
+  let [clicked, setClicked] = useState(false);
+  let clickHandler = () => {
+    setClicked(!clicked);
+    console.log(clicked);
+  };
+
   return (
     <section className="bg-background py-16 lg:py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,13 +18,24 @@ const PersonalIntroSection = () => {
             <div className="relative">
               <div className="w-80 h-80 mx-auto justify-center flex flex-row lg:mx-0 rounded-lg  shadow-elevated">
                 <Image
-                  src="/assets/images/samirsir.JPG"
+                  src="/assets/images/sir.jpg"
                   alt="Dr. Samir Kumar Pandey - Founder of Mathematics for All"
-                  className="object-cover"
+                  className="object-cover rounded-lg"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-elevated">
-                <Icon name="Heart" size={24} color="white" />
+              <div
+                onClick={clickHandler}
+                className="absolute -bottom-4 -right-4 w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-elevated"
+              >
+                <Icon
+                  name="Heart"
+                  size={24}
+                  className={`${
+                    clicked
+                      ? "text-muted-foreground "
+                      : "text-red-500 fill-current "
+                  } `}
+                />
               </div>
             </div>
           </div>

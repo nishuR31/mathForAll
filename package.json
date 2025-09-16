@@ -5,8 +5,8 @@
 
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "cd backend && npx nodemon server.js",
-    "dev:client": "cd frontend && vite"
+    "dev:server": "cd backend && npm run dev",
+    "dev:client": "cd frontend && npm run start"
 
 
   },

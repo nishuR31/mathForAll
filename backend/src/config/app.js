@@ -3,18 +3,19 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
 import cookie from "cookie-parser";
-import logger from "../midlleware/logger.middleware.js";
+import logger from "../middleware/logger.middleware.js";
 import codes from "../utils/statusCodes.js";
 import path from "path";
 import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import ApiResponse from "../utils/apiResponse.js";
 import userRouter from "../routes/user.routes.js";
 import infoRouter from "../routes/info.route.js";
+import { fileURLToPath } from "url";
 
 let app = express();
 
 let corsOptions = {
-  origin: ["http://localhost:4028"],
+  origin: "http://localhost:4028",
   credentials: true,
 };
 
@@ -34,18 +35,18 @@ app.use(cors(corsOptions));
 app.use(helmet(helmetOptions));
 app.use(cookie());
 app.use(logger);
+let __dirname = fileURLToPath(import.meta.url);
 app.use(express.static(path.join(__dirname, "/frontend")));
 
 let baseRoute = "/api/v1";
-app.get("/*splat", (req, res) => {
+
+app.use(`${baseRoute}/sir`, userRouter);
+app.use(`${baseRoute}/data`, infoRouter);
+app.all("/*splat", (req, res) => {
   res
     .status(codes.notFound)
     .json(new ApiErrorResponse("Invalid route..", codes.notFound).res());
 });
-
-app.use(`${baseRoute}/sir`, userRouter);
-app.use(`${baseRoute}/data`, infoRouter);
-
 app.get("/", (req, res) => {
   res
     .status(codes.ok)

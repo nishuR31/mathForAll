@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "../../../components/AppImage";
 import Icon from "../../../components/AppIcon";
 
 const TeacherCard = ({ teacher }) => {
+  let [img, setImg] = useState(teacher?.image[0]);
+  useEffect(() => {
+    let i = 0;
+    let interval = setInterval(() => {
+      setImg(teacher?.image[i % teacher?.image.length]);
+      i++;
+    }, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [img]);
+
   return (
     <div className="bg-card border border-border rounded-lg p-6 shadow-soft hover:shadow-elevated transition-smooth">
       <div className="flex flex-col items-center text-center">
         {/* Profile Image */}
-        <div className="w-24 h-30 mb-4 overflow-hidden  ">
-          <Image
-            src={teacher?.image}
-            alt={`${teacher?.name} - Mathematics Teacher`}
-            className=" object-cover"
-          />
+        <div className="w-30 h-30 mb-4 overflow-hidden  ">
+          <div className="relative w-64 h-64 group flex flex-row justify-center">
+            <Image
+              src={img}
+              alt={`${teacher?.name} - Mathematics Teacher`}
+              className={`object-cover  transition-all delay-[3000]  duration-3000 bg-transparent rounded-xl`}
+            />
+          </div>
         </div>
 
         {/* Name and Title */}

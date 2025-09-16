@@ -1,5 +1,5 @@
-import React from 'react';
-import Icon from '../../../components/AppIcon';
+import React from "react";
+import Icon from "../../../components/AppIcon";
 
 const HeroSection = () => {
   return (
@@ -7,20 +7,21 @@ const HeroSection = () => {
       <div className="text-center max-w-3xl mx-auto">
         <div className="flex justify-center mb-4">
           <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-            <Icon name="Users" size={32} color="white" />
+            <Icon name="Users" size={32} color="white" className="" />
           </div>
         </div>
-        
+
         <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
           Meet Our Expert Mathematics Teacher
         </h1>
-        
+
         <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-          Our dedicated ,qualified mathematics educator brings years of experience and passion for teaching. 
-          He specializes in different areas of mathematics, ensuring comprehensive coverage of all topics 
-          from basic arithmetic to advanced calculus.
+          Our dedicated ,qualified mathematics educator brings years of
+          experience and passion for teaching. He specializes in different areas
+          of mathematics, ensuring comprehensive coverage of all topics from
+          basic arithmetic to advanced calculus.
         </p>
-        
+
         <div className="flex flex-wrap justify-center gap-4 text-sm text-secondary">
           <div className="flex items-center">
             <Icon name="Award" size={16} className="mr-2 text-primary" />
