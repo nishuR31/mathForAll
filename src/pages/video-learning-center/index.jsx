@@ -9,8 +9,8 @@ import RelatedVideos from "./components/RelatedVideos";
 import Icon from "../../components/AppIcon";
 import Image from "../../components/AppImage";
 
-const API_KEY = import.meta.env.VITE_YT_API_KEY;
-const CHANNEL_ID = import.meta.env.VITE_YT_CHANNEL_ID;
+const API_KEY = import.meta.env.VITE_API_KEY;
+const CHANNEL_ID = import.meta.env.VITE_CHANNEL_ID;
 
 const VideoLearningCenter = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,6 +38,8 @@ const VideoLearningCenter = () => {
   useEffect(() => {
     const fetchChannelInfo = async () => {
       try {
+        console.log("channel data fetching");
+
         const res = await fetch(
           `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${CHANNEL_ID}&key=${API_KEY}`
         );
@@ -115,12 +117,10 @@ const VideoLearningCenter = () => {
     const fetchVideos = async () => {
       try {
         const res = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${
-            channelInfo.channelId ?? CHANNEL_ID
-          }&part=snippet,id&order=date&maxResults=10`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10`
         );
 
-        const data = await res.json();
+        const data = (await res.json()) ?? [];
 
         const formattedVideos = data.items.map((item, idx) => ({
           id: idx,
