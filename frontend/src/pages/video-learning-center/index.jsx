@@ -42,6 +42,7 @@ const VideoLearningCenter = () => {
 
         const res = await fetch(
           `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${CHANNEL_ID}&key=${API_KEY}`
+          `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCAbXT1aYSDiXHHkakobyLsg&key=AIzaSyC4CmvLNvIsNNNz1Xf5J6avtBdA8izw2go`
         );
         const data = await res.json();
 
@@ -83,7 +84,7 @@ const VideoLearningCenter = () => {
         console.error("Error fetching channel info:", error);
       }
     };
-
+ 
     fetchChannelInfo();
   }, []);
 
@@ -118,6 +119,7 @@ const VideoLearningCenter = () => {
       try {
         const res = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10`
+          `https://www.googleapis.com/youtube/v3/search?key=AIzaSyC4CmvLNvIsNNNz1Xf5J6avtBdA8izw2go&channelId=UCAbXT1aYSDiXHHkakobyLsg&part=snippet,id&order=date&maxResults=30`
         );
 
         const data = (await res.json()) ?? [];

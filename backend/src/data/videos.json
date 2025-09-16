@@ -1,0 +1,898 @@
+[
+  {
+    "kind": "youtube#searchResult",
+    "etag": "tasijtOAgsgxaKDh-LI82_MankQ",
+    "id": { "kind": "youtube#video", "videoId": "Y2i-Pe4ew2Y" },
+    "snippet": {
+      "publishedAt": "2022-12-18T15:12:12Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Your Favorite channel &quot;Mathematics For All&quot; is Back. Stay tuned with us for more Tips and Tricks.",
+      "description": "",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Y2i-Pe4ew2Y/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Y2i-Pe4ew2Y/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Y2i-Pe4ew2Y/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2022-12-18T15:12:12Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "SKq5hFMu8vj_uynXXFOgV3sFlpU",
+    "id": { "kind": "youtube#video", "videoId": "Hoty5DaSq-c" },
+    "snippet": {
+      "publishedAt": "2020-05-26T10:53:25Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Square of a Number",
+      "description": "Hello everyone, this is Dr Samir Pandey, here you can learn how to find square of a number. Please like, share n subscribe.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Hoty5DaSq-c/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Hoty5DaSq-c/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Hoty5DaSq-c/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-26T10:53:25Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "zPWAvQ8frdwelBQvi1eKeDBtKMs",
+    "id": { "kind": "youtube#video", "videoId": "XiqqtdsC1SQ" },
+    "snippet": {
+      "publishedAt": "2020-05-19T10:36:33Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Divisibility Criteria",
+      "description": "Hello everyone, this is Dr Samir Pandey. Here you can understand the divisibility criteria of 2, 3, 7, 11. Please like, share n ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/XiqqtdsC1SQ/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/XiqqtdsC1SQ/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/XiqqtdsC1SQ/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-19T10:36:33Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "yOUp750lQUMRHc09tR5I9-iqJ78",
+    "id": { "kind": "youtube#video", "videoId": "55BlZGtWACs" },
+    "snippet": {
+      "publishedAt": "2020-05-16T08:47:01Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "To find Number of primes in factorial n",
+      "description": "In this lecture, you can easily understand how to find number of primes in Factorial n. Please like, share n subscribe.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/55BlZGtWACs/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/55BlZGtWACs/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/55BlZGtWACs/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-16T08:47:01Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "IVZLBuIq40QpdF6_NX4G_oevbJY",
+    "id": { "kind": "youtube#video", "videoId": "C4skussYZBg" },
+    "snippet": {
+      "publishedAt": "2020-05-15T11:18:01Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Digit at Unit&#39;s Place",
+      "description": "Hello everyone, here you can get how to find the digit at unit's place in exponents. Please like, share and subscribe. Thank you all.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/C4skussYZBg/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/C4skussYZBg/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/C4skussYZBg/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-15T11:18:01Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "Tw18GOhNUqfeJeete56EoYEzQFM",
+    "id": { "kind": "youtube#video", "videoId": "q_haZTxUJwI" },
+    "snippet": {
+      "publishedAt": "2020-05-08T12:19:57Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Function: Domain &amp; Range",
+      "description": "Please like, share n subscribe.. Thank you all..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/q_haZTxUJwI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/q_haZTxUJwI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/q_haZTxUJwI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-08T12:19:57Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "mqh3S1_YNwWIZDpSvVdJ0q49VdU",
+    "id": { "kind": "youtube#video", "videoId": "sModTHBUiB0" },
+    "snippet": {
+      "publishedAt": "2020-05-08T11:19:17Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Even / Odd Functions",
+      "description": "Hello everyone.. this is Dr Samir Pandey.. Please like, share and subscribe.. Thanks a ton..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/sModTHBUiB0/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/sModTHBUiB0/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/sModTHBUiB0/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-08T11:19:17Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "W9Jn4dLwwKuVZrFMDZm18mWTmrY",
+    "id": { "kind": "youtube#video", "videoId": "mKNnHjeWDZs" },
+    "snippet": {
+      "publishedAt": "2020-05-04T07:51:38Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Solution of system of equations by Rank method",
+      "description": "Just learn, how to solve system of linear equations by Rank method. Please like, share and subscribe.. Thank you..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/mKNnHjeWDZs/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/mKNnHjeWDZs/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/mKNnHjeWDZs/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-04T07:51:38Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "eNd08cmddN9PkoDFX9ry_oSZQ5o",
+    "id": { "kind": "youtube#video", "videoId": "FRVipANYH7o" },
+    "snippet": {
+      "publishedAt": "2020-05-01T10:19:05Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Trigonometric Function: Introduction",
+      "description": "Hello everyone, this is Dr Samir Pandey. You can find here basics of trigonometric functions. Please like, share and subscribe..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/FRVipANYH7o/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/FRVipANYH7o/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/FRVipANYH7o/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-05-01T10:19:05Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "kjMwwPm-QL3-RtG75dN3epgznSo",
+    "id": { "kind": "youtube#video", "videoId": "XSQp7JJw3U8" },
+    "snippet": {
+      "publishedAt": "2020-04-29T09:26:14Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Rank of Matrix I",
+      "description": "Hello everyone, here you can find Rank of Matrix. Please like, share and subscribe. Thanking you..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/XSQp7JJw3U8/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/XSQp7JJw3U8/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/XSQp7JJw3U8/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-29T09:26:14Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "TWCBOQIeuVNm_ntL_YFM7udfzQM",
+    "id": { "kind": "youtube#video", "videoId": "ZVzuxHa89wg" },
+    "snippet": {
+      "publishedAt": "2020-04-24T12:00:01Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Sol of system of linear eq..",
+      "description": "Feel free to ask doubts. Please like, share n Subscribe..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/ZVzuxHa89wg/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/ZVzuxHa89wg/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/ZVzuxHa89wg/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-24T12:00:01Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "9plpFVlsTZ4xyeZY-QxB5fyeEjQ",
+    "id": { "kind": "youtube#video", "videoId": "grdgRg0wVRg" },
+    "snippet": {
+      "publishedAt": "2020-04-23T11:30:45Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Function and its Type II",
+      "description": "Please like, share n subscribe..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/grdgRg0wVRg/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/grdgRg0wVRg/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/grdgRg0wVRg/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-23T11:30:45Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "4411z4Q9eAyI9-XaBjdB0pV89hQ",
+    "id": { "kind": "youtube#video", "videoId": "MohcBPbnU7g" },
+    "snippet": {
+      "publishedAt": "2020-04-22T12:47:55Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Inverse of Matrices",
+      "description": "Hello everyone, you can understand how to find inverse of a matrix using adjoint method as well as row transformation method.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/MohcBPbnU7g/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/MohcBPbnU7g/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/MohcBPbnU7g/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-22T12:47:55Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "K290EBd-XaLVMbadJZBXGT6OE-o",
+    "id": { "kind": "youtube#video", "videoId": "B8EnYrpUJN0" },
+    "snippet": {
+      "publishedAt": "2020-04-21T11:32:58Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Function &amp; its Types I",
+      "description": "Please like, share n subscribe...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/B8EnYrpUJN0/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/B8EnYrpUJN0/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/B8EnYrpUJN0/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-21T11:32:58Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "RGSF4rDFmSlcGDO1D-qkES-zZwY",
+    "id": { "kind": "youtube#video", "videoId": "t982szasOYM" },
+    "snippet": {
+      "publishedAt": "2020-04-20T10:59:28Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Matrices: Adjoint",
+      "description": "Hello guys, please like, share, comments and Subscribe..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/t982szasOYM/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/t982szasOYM/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/t982szasOYM/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-20T10:59:28Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "2j50clgSGPxEVW1gxzh8QECXd7Q",
+    "id": { "kind": "youtube#video", "videoId": "8OO2ZBz0Dlo" },
+    "snippet": {
+      "publishedAt": "2020-04-17T11:40:38Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Matrices: Add &amp; Multiply",
+      "description": "This is Dr Samir Pandey.. please like, comment, share and Subscribe.. thanking you all..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/8OO2ZBz0Dlo/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/8OO2ZBz0Dlo/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/8OO2ZBz0Dlo/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-17T11:40:38Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "pxchZMjLQ0eqaUp7m3tOqbwDj38",
+    "id": { "kind": "youtube#video", "videoId": "B-SA2WjSC6s" },
+    "snippet": {
+      "publishedAt": "2020-04-16T12:24:55Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Intervals...",
+      "description": "This is Dr Samir Pandey, you get aware about Intervals here. Please like, comments, share and Subscribe.. Thank you all..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/B-SA2WjSC6s/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/B-SA2WjSC6s/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/B-SA2WjSC6s/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-16T12:24:55Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "bOiCHfMxnqoYCKSdp54f083MI8E",
+    "id": { "kind": "youtube#video", "videoId": "1UmjcM-RhtM" },
+    "snippet": {
+      "publishedAt": "2020-04-15T11:33:03Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Matrices: Introduction",
+      "description": "Hello guys, this is Dr Samir Pandey, here you can find Introduction of Matrices. Please like, suggest, share and subscribe..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/1UmjcM-RhtM/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/1UmjcM-RhtM/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/1UmjcM-RhtM/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-15T11:33:03Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "8JeCC3HoDDGeLrNOcuxX-BQqfTo",
+    "id": { "kind": "youtube#video", "videoId": "N6gRcIAGh6g" },
+    "snippet": {
+      "publishedAt": "2020-04-13T10:03:57Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Determinants: Properties",
+      "description": "Hello Everyone, this is Dr Samir Pandey, here you can get properties of Determinants and some applications. Please like, suggest ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/N6gRcIAGh6g/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/N6gRcIAGh6g/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/N6gRcIAGh6g/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-13T10:03:57Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "djk034afBmN4XBkm7u6gSFRMmc4",
+    "id": { "kind": "youtube#video", "videoId": "LTw146DxO2c" },
+    "snippet": {
+      "publishedAt": "2020-04-10T10:11:20Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Determinants: Minors n cofactors",
+      "description": "Hello everyone, this is Dr Samir Pandey, you can learn how to find minors and cofactors of Determinants. Please like, suggest ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/LTw146DxO2c/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/LTw146DxO2c/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/LTw146DxO2c/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-10T10:11:20Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "U_TEpP8LnnDqSgClPvidGwPkYnw",
+    "id": { "kind": "youtube#video", "videoId": "WV5VF676JU4" },
+    "snippet": {
+      "publishedAt": "2020-04-07T11:31:09Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Determinants: Cramer&#39;s Rule",
+      "description": "Hello Guys, this is Dr Samir Pandey, in this video lecture you can understand how to solve the equations using Cramer's Rule.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/WV5VF676JU4/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/WV5VF676JU4/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/WV5VF676JU4/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-07T11:31:09Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "EXRKnt1GuHdlf3JJAlFTMJEGYXQ",
+    "id": { "kind": "youtube#video", "videoId": "Py8qN9Nnfoc" },
+    "snippet": {
+      "publishedAt": "2020-04-06T11:53:03Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Determinants !",
+      "description": "Hello everyone, this is Dr Samir Pandey. In this part, you can learn the basics of determinants.. Please like, suggest, share and ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Py8qN9Nnfoc/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Py8qN9Nnfoc/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Py8qN9Nnfoc/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-06T11:53:03Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "UFy1MVuijXpRVZ2WC9zP-43Ndhc",
+    "id": { "kind": "youtube#video", "videoId": "9v2xqhq-xx8" },
+    "snippet": {
+      "publishedAt": "2020-04-03T08:53:59Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Complex Number IV",
+      "description": "Hello everyone, please like, comment, suggest n subscribe. Stay at home, be healthy, take care.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/9v2xqhq-xx8/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/9v2xqhq-xx8/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/9v2xqhq-xx8/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-03T08:53:59Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "CC2mvGIsATDNcmtTvLkWQSjOegI",
+    "id": { "kind": "youtube#video", "videoId": "0fiDrgHSlJI" },
+    "snippet": {
+      "publishedAt": "2020-04-01T10:47:02Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Complex Number III",
+      "description": "Hello everyone, this is Dr Samir Pandey, welcome all. Discussing about DeMoiver's theorem, cube/nth roots of unity. Please like ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/0fiDrgHSlJI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/0fiDrgHSlJI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/0fiDrgHSlJI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-04-01T10:47:02Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "g1ZerLFL1xXyfzM1rxxPhhh314c",
+    "id": { "kind": "youtube#video", "videoId": "f3RrxmLjxZU" },
+    "snippet": {
+      "publishedAt": "2020-03-30T10:29:47Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Complex Number II",
+      "description": "Hello everyone, this is Dr Samir Pandey, happy welcome to all of you. In this video you can understand Argument and its Principal ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/f3RrxmLjxZU/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/f3RrxmLjxZU/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/f3RrxmLjxZU/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-03-30T10:29:47Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "NClIdo1iXEKX_doW3zHhE1jSHno",
+    "id": { "kind": "youtube#video", "videoId": "ZYA_5tn-4EI" },
+    "snippet": {
+      "publishedAt": "2020-03-27T11:44:08Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Complex Number - I",
+      "description": "Hello everyone, this is Dr Samir Pandey. Please like, comments, suggest and subscribe.. Be Happy.. Always..",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/ZYA_5tn-4EI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/ZYA_5tn-4EI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/ZYA_5tn-4EI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-03-27T11:44:08Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "y2o8x-H--l7SLYJGCCWnEsKgxsk",
+    "id": { "kind": "youtube#video", "videoId": "VObfqTKmrL8" },
+    "snippet": {
+      "publishedAt": "2020-03-25T12:58:01Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Function: Just an Introduction.",
+      "description": "Hello everyone, this is just an introduction of \"Function\". Lots of relative videos about to come.. please like, comments, subscribe ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/VObfqTKmrL8/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/VObfqTKmrL8/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/VObfqTKmrL8/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-03-25T12:58:01Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "dOM-G3o4blCK3kkyGchR6aczGn0",
+    "id": { "kind": "youtube#video", "videoId": "RtVniFP1eZg" },
+    "snippet": {
+      "publishedAt": "2020-03-20T16:35:10Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Introduction...",
+      "description": "Hello everyone.. I am Dr Samir Pandey.. welcome to my youtube channel.. Here you will get find how to make Mathematics easier.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/RtVniFP1eZg/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/RtVniFP1eZg/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/RtVniFP1eZg/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-03-20T16:35:10Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "a5ArEGrVLxcV6VdoFxh0CLp6L_w",
+    "id": {
+      "kind": "youtube#channel",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg"
+    },
+    "snippet": {
+      "publishedAt": "2020-01-10T10:25:43Z",
+      "channelId": "UCAbXT1aYSDiXHHkakobyLsg",
+      "title": "Samir Kumar Pandey",
+      "description": "Mathematics up to Higher Education.",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s88-c-k-c0xffffffff-no-rj-mo"
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s240-c-k-c0xffffffff-no-rj-mo"
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s800-c-k-c0xffffffff-no-rj-mo"
+        }
+      },
+      "channelTitle": "Samir Kumar Pandey",
+      "liveBroadcastContent": "none",
+      "publishTime": "2020-01-10T10:25:43Z"
+    }
+  }
+]

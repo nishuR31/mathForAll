@@ -1,0 +1,41 @@
+[
+  {
+    "kind": "youtube#channel",
+    "etag": "IoXm6f8t3lmJ3-qPyYZldRBu8t8",
+    "id": "UCAbXT1aYSDiXHHkakobyLsg",
+    "snippet": {
+      "title": "Samir Kumar Pandey",
+      "description": "Mathematics up to Higher Education",
+      "customUrl": "@mathematicsforall9108",
+      "publishedAt": "2020-01-10T10:25:43.305094Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "Samir Kumar Pandey",
+        "description": "Mathematics up to Higher Education"
+      },
+      "country": "IN"
+    },
+    "statistics": {
+      "viewCount": "3071",
+      "subscriberCount": "157",
+      "hiddenSubscriberCount": false,
+      "videoCount": "28"
+    }
+  }
+]

@@ -1,0 +1,31 @@
+
+ Base Route
+
+ GET / → Root
+ ALL / → Fallback → Invalid route..
+
+---
+
+ /api/v1/sir (User Endpoints)
+
+ POST   /api/v1/sir/signup → Register user
+ GET    /api/v1/sir/reset → Reset user (protected: auth(true))
+ POST   /api/v1/sir/login → Login (protected: auth(false))
+ GET    /api/v1/sir/me → Profile (protected: auth(false))
+ GET    /api/v1/sir/logout → Logout (protected: auth(false))
+ PATCH  /api/v1/sir/update → Update profile (protected: auth(true))
+ DELETE /api/v1/sir/del → Delete user (protected: auth(true))
+ GET    /api/v1/sir/forgot → Forgot password
+ POST   /api/v1/sir/otp → Verify OTP
+ PATCH  /api/v1/sir/change-pass → Change password
+ GET    /api/v1/sir/password-less-login → Password-less login (triggers passwordLessMail, then passwordLessLogin)
+
+---
+
+ /api/v1/info (Data/Info Endpoints)
+
+ GET /api/v1/info/refresh/videos → Refresh videos (protected: auth(true))
+ GET /api/v1/info/refresh/channel → Refresh channel (protected: auth(true))
+ GET /api/v1/info/fetch/channel → Fetch channel data
+ GET /api/v1/info/fetch/videos → Fetch videos
+ GET /api/v1/info/health → Health check
