@@ -18,8 +18,8 @@ const StatsSection = () => {
     {
       icon: "Users",
       value: "120",
-      label: "Expert Teachers",
-      description: "Qualified educators with years of experience"
+      label: "Expert Teacher",
+      description: "Qualified educator with years of experience"
     },
     {
       icon: "Download",

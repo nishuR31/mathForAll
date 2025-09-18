@@ -151,10 +151,10 @@ const TeachersShowcase = () => {
                       size={16}
                       className="mr-2 text-success"
                     />
-                    Our Mission
+                    My Mission
                   </h4>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    We believe that every student can succeed in mathematics
+                    I believe that every student can succeed in mathematics
                     with the right guidance and support. Our teachers are
                     committed to making mathematics accessible, engaging, and
                     relevant to students' lives.
@@ -172,7 +172,7 @@ const TeachersShowcase = () => {
                   </h4>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Our approach combines traditional mathematical rigor with
-                    modern teaching methods. We focus on building understanding
+                    modern teaching methods. I focus on building understanding
                     rather than memorization, encouraging critical thinking and
                     problem-solving skills.
                   </p>

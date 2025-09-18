@@ -1,13 +1,30 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from 'components/ui/Button';
-import Icon from 'components/AppIcon';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "components/ui/Button";
+import Icon from "components/AppIcon";
 
 const NotFound = () => {
   const navigate = useNavigate();
 
+  const [time, setTime] = useState(15);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigate("/");
+    }, 15000);
+
+    const timer = setInterval(() => {
+      setTime((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(timer);
+    };
+  }, [navigate]);
+
   const handleGoHome = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -19,9 +36,12 @@ const NotFound = () => {
           </div>
         </div>
 
-        <h2 className="text-2xl font-medium text-onBackground mb-2">Page Not Found</h2>
+        <h2 className="text-2xl font-medium text-onBackground mb-2">
+          Page Not Found
+        </h2>
         <p className="text-onBackground/70 mb-8">
-          The page you're looking for doesn't exist. Let's get you back!
+          The page you're looking for doesn't exist. Let's get you back
+          automatically in {time}s!
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

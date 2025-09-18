@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.MAIL, // Gmail address
+    user: process.env.MAIL_USER, // Gmail address
     pass: process.env.MAIL_PASS, // Gmail App Password
   },
 });
@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 export const mail = async ({ to, subject, html, text }) => {
   try {
     const info = await transporter.sendMail({
-      from: `Mathematics for All - <${process.env.MAIL}>`, // keep this consistent
+      from: `Mathematics for All - ${process.env.MAIL_USER}`, // keep this consistent
       to,
       subject,
       text,

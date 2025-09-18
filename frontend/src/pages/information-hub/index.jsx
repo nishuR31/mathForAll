@@ -129,7 +129,7 @@ const InformationHub = () => {
                   <img src="/assets/images/samirsir.JPG" alt='Mathematics for all' />
                 </div>
                 <span className="font-heading font-semibold text-lg text-card-foreground">
-                  Maths for All
+                  Mathematics for All
                 </span>
               </div>
               <div className="text-center md:text-right">

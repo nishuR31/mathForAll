@@ -35,13 +35,23 @@ app.use(cors(corsOptions));
 app.use(helmet(helmetOptions));
 app.use(cookie());
 app.use(logger);
-let __dirname = fileURLToPath(import.meta.url);
-app.use(express.static(path.join(__dirname, "/frontend")));
+let __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 let baseRoute = "/api/v1";
 
 app.use(`${baseRoute}/sir`, userRouter);
-app.use(`${baseRoute}/data`, infoRouter);
+app.use(`${baseRoute}/info`, infoRouter);
+
+// ...
+
+app.use(
+  `${baseRoute}/json`,
+  express.static(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), "../data")
+  )
+);
+
 app.all("/*splat", (req, res) => {
   res
     .status(codes.notFound)

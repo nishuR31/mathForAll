@@ -25,32 +25,31 @@ export const health = asyncHandler(async (req, res) => {
     .json(new ApiResponse("Server is running fine.", codes.ok).res());
 });
 
-export const videos = asyncHandler(async (req, res) => {
-  let response = await fetch("../data/videos.json");
-  let data = await response.json();
-  return res
-    .status(codes.ok)
-    .json(
-      new ApiResponse("Videos found.", codes.ok, { videos: data.items }).res()
-    );
-});
+// export const videos = asyncHandler(async (req, res) => {
+//   let response = await fetch("../data/videos.json");
+//   let data = await response.json();
+//   return res
+//     .status(codes.ok)
+//     .json(
+//       new ApiResponse("Videos found.", codes.ok, { videos: data.items }).res()
+//     );
+// });
 
-export const channel = asyncHandler(async (req, res) => {
-  let response = await fetch("../data/channel.json");
-  let data = await response.json();
-  return res
-    .status(codes.ok)
-    .json(
-      new ApiResponse("Videos found.", codes.ok, { videos: data.items }).res()
-    );
-});
+// export const channel = asyncHandler(async (req, res) => {
+//   let response = await fetch("../data/channel.json");
+//   let data = await response.json();
+//   return res
+//     .status(codes.ok)
+//     .json(
+//       new ApiResponse("Videos found.", codes.ok, { videos: data.items }).res()
+//     );
+// });
 
 export const contact = asyncHandler(async (req, res) => {
   let { name, email, subject, message } = req.body;
-  console.table(req.body)
 
   await mail({
-    to: `backendteam.management@gmail.com`,
+    to: process.env.USER_MAIL,
     subject: subject,
     text: message,
     html: `<!DOCTYPE html>

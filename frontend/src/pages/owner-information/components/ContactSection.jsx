@@ -54,7 +54,7 @@ const ContactSection = () => {
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
-    // Mock form submission
+    // Mock form submission 
     let res = await fetch("http://localhost:4029/api/v1/info/contact", {
       method: "POST", // important
       headers: {
@@ -63,6 +63,14 @@ const ContactSection = () => {
       // body: formData, // convert JS object to JSON
       body: JSON.stringify(formData), // convert JS object to JSON
     });
+    // let res = await fetch("http://localhost:4029/api/v1/info/contact", {
+    //   method: "POST", // important
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   // body: formData, // convert JS object to JSON
+    //   body: JSON.stringify(formData), // convert JS object to JSON
+    // });
     let data = await res.json();
 
     if (!data.success) {
@@ -70,7 +78,7 @@ const ContactSection = () => {
     }
 
     console.log("Form submitted:", formData);
-    alert("Thank you for your message! I'll get back to you soon.");
+    console.log("Thank you for your message! I'll get back to you soon.");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 

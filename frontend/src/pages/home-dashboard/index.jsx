@@ -22,7 +22,7 @@ const HomeDashboard = () => {
         </title>
         <meta
           name="description"
-          content="Welcome to Maths for All - your gateway to free, comprehensive mathematics education. Access study notes, video lessons, and expert teaching resources without registration."
+          content="Welcome to Mathematics for All - your gateway to free, comprehensive mathematics education. Access study notes, video lessons, and expert teaching resources without registration."
         />
         <meta
           name="keywords"
@@ -30,7 +30,7 @@ const HomeDashboard = () => {
         />
         <meta
           property="og:title"
-          content="Maths for All - Free Mathematics Education Platform"
+          content="Mathematics for All - Free Mathematics Education Platform"
         />
         <meta
           property="og:description"

@@ -1,12 +1,11 @@
-import React from 'react';
-import Icon from '../../../components/AppIcon';
-import Button from '../../../components/ui/Button';
+import React from "react";
+import Icon from "../../../components/AppIcon";
+import Button from "../../../components/ui/Button";
 
 const VideoPlayer = ({ video, onClose }) => {
   if (!video) return null;
-
   const getYouTubeEmbedUrl = (videoId) => {
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    return `https://www.youtube.com/embed/${video?.videoId}?autoplay=1&rel=0&modestbranding=1`;
   };
 
   return (
@@ -22,7 +21,7 @@ const VideoPlayer = ({ video, onClose }) => {
             allowFullScreen
           />
         </div>
-        
+
         <Button
           variant="ghost"
           size="icon"
@@ -36,28 +35,24 @@ const VideoPlayer = ({ video, onClose }) => {
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <h2 className="font-heading font-semibold text-xl text-foreground mb-2">
-              {video?.title}
+              <div dangerouslySetInnerHTML={{ __html: video?.title }} />
             </h2>
-            
+
             <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
               <div className="flex items-center space-x-1">
                 <Icon name="User" size={16} />
-                <span>{video?.instructor}</span>
+                <span>Dr. Samir Kumar Pandey</span>
               </div>
-              
-              <div className="flex items-center space-x-1">
-                <Icon name="Eye" size={16} />
-                <span>{video?.views?.toLocaleString()} views</span>
-              </div>
+              {/*               
               
               <div className="flex items-center space-x-1">
                 <Icon name="Clock" size={16} />
                 <span>{Math.floor(video?.duration / 60)} min</span>
-              </div>
+              </div> */}
             </div>
           </div>
-          
-          <div className="flex items-center space-x-2">
+
+          {/* <div className="flex items-center space-x-2">
             <span className={`px-3 py-1 rounded-full text-sm font-medium ${
               video?.difficulty === 'Beginner' ? 'bg-success text-success-foreground' :
               video?.difficulty === 'Intermediate' ? 'bg-warning text-warning-foreground' :
@@ -65,14 +60,14 @@ const VideoPlayer = ({ video, onClose }) => {
             }`}>
               {video?.difficulty}
             </span>
-          </div>
+          </div> */}
         </div>
-        
+
         <p className="text-foreground mb-4 leading-relaxed">
           {video?.description}
         </p>
-        
-        <div className="flex flex-wrap gap-2">
+
+        {/* <div className="flex flex-wrap gap-2">
           {video?.tags?.map((tag, index) => (
             <span 
               key={index}
@@ -81,7 +76,7 @@ const VideoPlayer = ({ video, onClose }) => {
               {tag}
             </span>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

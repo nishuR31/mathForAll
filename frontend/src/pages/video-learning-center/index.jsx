@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom"
 import { Helmet } from "react-helmet";
 import Header from "../../components/ui/Header";
 import SearchBar from "./components/SearchBar";
@@ -38,27 +39,30 @@ const VideoLearningCenter = () => {
   useEffect(() => {
     const fetchChannelInfo = async () => {
       try {
-        console.log("channel data fetching");
-
         const res = await fetch(
-          `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${CHANNEL_ID}&key=${API_KEY}`
-          `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCAbXT1aYSDiXHHkakobyLsg&key=AIzaSyC4CmvLNvIsNNNz1Xf5J6avtBdA8izw2go`
+          "http://localhost:4029/api/v1/json/channel.json"
         );
-        const data = await res.json();
 
-        const channel = data.items[0];
+        let data = await res.json();
+        const channel = data[0];
 
         setChannelInfo({
           name: "Mathematics For All",
-          handle: "@mathematicsforall9108",
+          handle: channel?.snippet?.customUrl,
           owner: "Samir Kumar Pandey",
           channelId: channel?.id ?? CHANNEL_ID,
           title: channel?.snippet.title,
+          country: channel?.snippet?.country,
           description: channel?.snippet?.description,
+          published: channel?.snippet?.publishedAt,
           avatar: "/assets/images/logo.png",
           subscriberCount: channel?.statistics?.subscriberCount,
+          viewCount: channel?.statistics?.viewCount,
           videoCount: channel?.statistics?.videoCount,
           banner: [
+            channel?.snippet?.thumbnails?.default?.url,
+            channel?.snippet?.thumbnails?.medium?.url,
+            channel?.snippet?.thumbnails?.high?.url,
             "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=1200&h=300&fit=crop",
             "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=120&h=30&fit=crop",
           ],
@@ -78,13 +82,11 @@ const VideoLearningCenter = () => {
         //     "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=120&h=30&fit=crop",
         //   ],
         // });
-        console.log("channel data fetched");
-        console.table(data.items[0]);
       } catch (error) {
         console.error("Error fetching channel info:", error);
       }
     };
- 
+
     fetchChannelInfo();
   }, []);
 
@@ -118,23 +120,20 @@ const VideoLearningCenter = () => {
     const fetchVideos = async () => {
       try {
         const res = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10`
-          `https://www.googleapis.com/youtube/v3/search?key=AIzaSyC4CmvLNvIsNNNz1Xf5J6avtBdA8izw2go&channelId=UCAbXT1aYSDiXHHkakobyLsg&part=snippet,id&order=date&maxResults=30`
+          "http://localhost:4029/api/v1/json/videos.json" // `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10``https://www.googleapis.com/youtube/v3/search?key=AIzaSyC4CmvLNvIsNNNz1Xf5J6avtBdA8izw2go&channelId=UCAbXT1aYSDiXHHkakobyLsg&part=snippet,id&order=date&maxResults=30`
         );
 
         const data = (await res.json()) ?? [];
 
-        const formattedVideos = data.items.map((item, idx) => ({
+        const formattedVideos = data.map((item, idx) => ({
           id: idx,
-          title: item.snippet.title,
-          description: item.snippet.description,
-          thumbnail: item.snippet.thumbnails.high.url,
-          videoId: item.id.videoId,
-          publishedAt: item.snippet.publishedAt,
+          title: item?.snippet?.title,
+          description: item?.snippet?.description,
+          thumbnail: item?.snippet?.thumbnails?.high?.url,
+          videoId: item?.id?.videoId,
+          publishedAt: item?.snippet?.publishedAt,
           topic: "General", // you can map topics later
         }));
-
-        console.table(data.items);
 
         setChannelVideos(formattedVideos);
         setFilteredVideos(formattedVideos);
@@ -331,6 +330,16 @@ const VideoLearningCenter = () => {
                         </div>
                         <div className="text-center">
                           <div className="font-semibold text-lg text-foreground">
+                            {channelInfo?.viewCount > 1000
+                              ? `${channelInfo?.viewCount / 1000}k`
+                              : channelInfo?.viewCount}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            Views
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="font-semibold text-lg text-foreground">
                             {channelInfo?.videoCount}
                           </div>
                           <div className="text-sm text-muted-foreground">
@@ -480,7 +489,7 @@ const VideoLearningCenter = () => {
               <div className="mt-12 bg-muted/50 rounded-2xl p-8">
                 <div className="text-center mb-8">
                   <h2 className="font-heading font-semibold text-2xl text-foreground mb-2">
-                    Why Learn with Samir Kumar Pandey?
+                    Why Learn with Dr. Samir Kumar Pandey?
                   </h2>
                   <p className="text-muted-foreground">
                     Join thousands of students who have improved their
@@ -498,7 +507,7 @@ const VideoLearningCenter = () => {
                       Expert Teacher
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      Learn from Samir Kumar Pandey's years of teaching
+                      Learn from Dr. Samir Kumar Pandey's years of teaching
                       experience
                     </p>
                   </div>
@@ -551,14 +560,14 @@ const VideoLearningCenter = () => {
                 <div className="text-center mt-8">
                   <div className="mb-4">
                     <Image
-                      src="/assets/images/samirsir.JPG"
+                      src="/assets/images/sir.jpg"
                       alt="Mathematics All Logo"
                       className="w-[300px] h-[300px] mx-auto mb-4 rounded-2xl object-contain bg-transparent"
                     />
                     <p className="text-foreground font-medium mb-2">
                       Created and taught by{" "}
                       <span className="text-primary font-semibold">
-                        Samir Kumar Pandey
+                        <Link to="/owner-information">Samir Kumar Pandey</Link>
                       </span>
                     </p>
                     <p className="text-muted-foreground text-sm">

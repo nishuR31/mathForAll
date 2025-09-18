@@ -15,8 +15,8 @@ const ContactSupportSection = () => {
     },
     {
       id: 2,
-      title: "Meet Our Teachers",
-      description: "Learn about the educators who create and curate our mathematics content.",
+      title: "Meet Our Teacher",
+      description: "Learn about the educator who create and curate our mathematics content.",
       icon: "Users",
       link: "/teachers-showcase",
       actionType: "link"
@@ -129,10 +129,10 @@ const ContactSupportSection = () => {
       <div className="text-center bg-primary/5 rounded-lg p-6">
         <Icon name="Heart" size={32} className="mx-auto text-primary mb-3" />
         <h3 className="text-lg font-heading font-medium text-foreground mb-2">
-          Thank You for Using Maths for All
+          Thank You for Using Mathematics for All
         </h3>
         <p className="text-muted-foreground max-w-md mx-auto">
-          We're committed to providing free, accessible mathematics education for everyone. 
+          i am committed to providing free, accessible mathematics education for everyone. 
           Happy learning!
         </p>
       </div>

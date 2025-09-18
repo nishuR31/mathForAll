@@ -22,12 +22,12 @@ const QuickAccessPanel = () => {
       stats: "200+ Videos"
     },
     {
-      title: "Meet Teachers",
-      description: "Learn about our educators",
+      title: "Meet our Teacher",
+      description: "Learn about our educator",
       icon: "Users",
       path: "/teachers-showcase",
       color: "success",
-      stats: "12 Teachers"
+      stats: "1 Teacher"
     },
     {
       title: "Get Help",
