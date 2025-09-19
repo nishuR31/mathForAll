@@ -2,7 +2,6 @@ import connect from "./src/config/connect.js";
 import app from "./src/config/app.js";
 import redis from "./src/config/redis.js";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 let port = process.env.PORT || 4321;

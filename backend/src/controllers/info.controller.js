@@ -2,6 +2,7 @@ import ApiResponse from "../utils/apiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { channelData, videoData } from "../utils/channelEntry.js";
 import { mail } from "../utils/mailer.js";
+import codes from "../utils/statusCodes.js";
 
 export let videoEntry = asyncHandler(async (req, res) => {
   let done = await videoData();
@@ -49,7 +50,7 @@ export const contact = asyncHandler(async (req, res) => {
   let { name, email, subject, message } = req.body;
 
   await mail({
-    to: process.env.USER_MAIL,
+    to: process.env.MAIL,
     subject: subject,
     text: message,
     html: `<!DOCTYPE html>
