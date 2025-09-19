@@ -13,7 +13,7 @@ import mongoose from "mongoose";
 import { mail } from "../utils/mailer.js";
 
 export let register = asyncHandler(async (req, res) => {
-  let { firstName, lastName, email, password, userName } = req.body;
+  let { firstName, lastName, email, password, password2, userName } = req.body;
   if (isEmpty([email, password, userName])) {
     return res
       .status(codes.badRequest)
@@ -43,7 +43,7 @@ export let register = asyncHandler(async (req, res) => {
       );
   }
 
-  if (!/d/.test(password)) {
+  if (!/\d/.test(password)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -76,7 +76,7 @@ export let register = asyncHandler(async (req, res) => {
       );
   }
 
-  if (/s/.test(password)) {
+  if (/\s/.test(password)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -87,7 +87,7 @@ export let register = asyncHandler(async (req, res) => {
       );
   }
 
-  if (!/W/.test(password)) {
+  if (!/\W/.test(password)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -95,6 +95,13 @@ export let register = asyncHandler(async (req, res) => {
           "Password must have a symbol [!,@...].",
           codes.badRequest
         ).res()
+      );
+  }
+  if (password !== password2) {
+    return res
+      .status(codes.badRequest)
+      .json(
+        new ApiErrorResponse("Password dont match.", codes.badRequest).res()
       );
   }
 
@@ -128,7 +135,13 @@ export let register = asyncHandler(async (req, res) => {
   //   password,
   //   userName,
   // });
-  let user = await User.create(req.body);
+  let user = await User.create({
+    firstName,
+    lastName,
+    email,
+    password,
+    userName,
+  });
   if (!user) {
     return res
       .status(codes.internalServerError)
@@ -604,7 +617,7 @@ export const changePass = asyncHandler(async (req, res) => {
       );
   }
 
-  if (!/d/.test(password)) {
+  if (!/\d/.test(password)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -637,7 +650,7 @@ export const changePass = asyncHandler(async (req, res) => {
       );
   }
 
-  if (/s/.test(password)) {
+  if (/\s/.test(password)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -648,7 +661,7 @@ export const changePass = asyncHandler(async (req, res) => {
       );
   }
 
-  if (!/W/.test(password)) {
+  if (!/\W/.test(password)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -702,7 +715,7 @@ export const changePass = asyncHandler(async (req, res) => {
 ///////////////////////////////////////////////////////////////////////////////
 
 export const passwordLessMail = asyncHandler(async (req, res, next) => {
-  let { email } = req.body;
+  let { email } = req.params;
   const user = await User.findOne({ email });
   if (!user) {
     return res
@@ -729,7 +742,7 @@ export const passwordLessMail = asyncHandler(async (req, res, next) => {
     
     <h2 style="color: #007bff; margin-bottom: 20px;">Click below to login</h2>
 
-    <a href="https://mathematics.com/password-less-login?z0mp0tmU2RUOhDo2b10hl21VR3mryg2UuCGhHEer=${token}" 
+    <a href="https://mathematics-for-all.onrender.com/api/v1/sir/password-less-login?z0mp0tmU2RUOhDo2b10hl21VR3mryg2UuCGhHEer=${token}" 
        style="display: inline-block; background-color: #28a745; color: #fff; 
               padding: 12px 24px; border-radius: 6px; text-decoration: none; 
               font-weight: bold; font-size: 16px;">
@@ -738,7 +751,7 @@ export const passwordLessMail = asyncHandler(async (req, res, next) => {
 
     <p style="font-size: 15px; color: #333; margin-top: 20px;">
       If this action was not done by you, please 
-      <a href="https://xground.com/reset-password" style="color: #d9534f; text-decoration: none;">
+      <a href="https://mathematics.vercel.app/reset-password" style="color: #d9534f; text-decoration: none;">
         reset your password immediately
       </a> and contact our support team.
     </p>
@@ -755,11 +768,9 @@ export const passwordLessMail = asyncHandler(async (req, res, next) => {
 `,
   });
 
-  next();
-
-  // return res
-  //   .status(codes.ok)
-  //   .json(new ApiResponse("Check your mail.", codes.ok).res());
+  return res
+    .status(codes.ok)
+    .json(new ApiResponse("Check your mail. Login link sent", codes.ok).res());
 });
 
 //////////////////////////////////////////////////////////
@@ -851,7 +862,7 @@ export let reset = asyncHandler(async (req, res) => {
       );
   }
 
-  if (!/d/.test(password1)) {
+  if (!/\d/.test(password1)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -884,7 +895,7 @@ export let reset = asyncHandler(async (req, res) => {
       );
   }
 
-  if (/s/.test(password1)) {
+  if (/\s/.test(password1)) {
     return res
       .status(codes.badRequest)
       .json(
@@ -895,7 +906,7 @@ export let reset = asyncHandler(async (req, res) => {
       );
   }
 
-  if (!/W/.test(password1)) {
+  if (!/\W/.test(password1)) {
     return res
       .status(codes.badRequest)
       .json(

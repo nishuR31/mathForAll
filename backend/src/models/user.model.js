@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 import required from "../utils/required.js";
 import bcrypt from "bcrypt";
@@ -35,7 +34,7 @@ let userSchema = new mongoose.Schema(
     },
     photoUrl: {
       type: String,
-      default: "",
+      default: `${process.env.FDOMAIN}/assets/images/sir.png`,
       trim: true,
     },
 
@@ -45,8 +44,10 @@ let userSchema = new mongoose.Schema(
       verified: { type: Boolean },
       expiry: { type: Date },
     },
-    yt:{type:String,default:"https://www.youtube.com/@mathematicsforall9108"}
-
+    yt: {
+      type: String,
+      default: "https://www.youtube.com/@mathematicsforall9108",
+    },
   },
   { timestamps: true }
 );

@@ -1,8 +1,8 @@
 import React from "react";
 
 function Image({
-  src = "/assets/images/samirsir.JPG",
-  alt = "Image Name",
+  src = "/assets/images/sir.jpg",
+  alt = "Samir sir",
   className = "",
   ...props
 }) {
@@ -12,7 +12,7 @@ function Image({
       alt={alt}
       className={className}
       onError={(e) => {
-        e.target.src = "/assets/images/no_image.png";
+        e.target.src = "/assets/images/samirsir.JPG";
       }}
       {...props}
     />

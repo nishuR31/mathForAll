@@ -49,7 +49,10 @@ const NotFound = () => {
             variant="primary"
             icon={<Icon name="ArrowLeft" />}
             iconPosition="left"
-            onClick={() => window.history?.back()}
+            onClick={() => {
+              window.history?.back();
+              toast.success("Back to previous page.");
+            }}
           >
             Go Back
           </Button>
@@ -58,7 +61,10 @@ const NotFound = () => {
             variant="outline"
             icon={<Icon name="Home" />}
             iconPosition="left"
-            onClick={handleGoHome}
+            onClick={() => {
+              handleGoHome();
+              toast.success("Back to Home.");
+            }}
           >
             Back to Home
           </Button>

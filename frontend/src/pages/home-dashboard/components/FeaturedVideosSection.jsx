@@ -310,36 +310,6 @@ const FeaturedVideosSection = () => {
         publishTime: "2020-03-20T16:35:10Z",
       },
     },
-    {
-      vid: 10,
-
-      kind: "youtube#searchResult",
-      etag: "a5ArEGrVLxcV6VdoFxh0CLp6L_w",
-      id: {
-        kind: "youtube#channel",
-        channelId: "UCAbXT1aYSDiXHHkakobyLsg",
-      },
-      snippet: {
-        publishedAt: "2020-01-10T10:25:43Z",
-        channelId: "UCAbXT1aYSDiXHHkakobyLsg",
-        title: "Samir Kumar Pandey",
-        description: "Mathematics up to Higher Education.",
-        thumbnails: {
-          default: {
-            url: "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s88-c-k-c0xffffffff-no-rj-mo",
-          },
-          medium: {
-            url: "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s240-c-k-c0xffffffff-no-rj-mo",
-          },
-          high: {
-            url: "https://yt3.ggpht.com/ytc/AIdro_kO5sUe1jnzUDf98f6-WNuzTW7dyAdyqkYcqVsGE1Bf-g=s800-c-k-c0xffffffff-no-rj-mo",
-          },
-        },
-        channelTitle: "Samir Kumar Pandey",
-        liveBroadcastContent: "none",
-        publishTime: "2020-01-10T10:25:43Z",
-      },
-    },
   ];
 
   const getDifficultyColor = (difficulty) => {
@@ -376,9 +346,13 @@ const FeaturedVideosSection = () => {
             >
               <div className="relative aspect-video bg-muted">
                 <img
-                  src={`https://img.youtube.com/vi/${video?.id?.channelId}/maxresdefault.jpg`}
+                  loading="lazy"
+                  src={`https://i.ytimg.com/vi/${video?.id?.videoId}/hqdefault.jpg`}
                   alt={video?.snippet?.title}
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = `https://i.ytimg.com/vi/${video?.id?.videoId}/default.jpg`;
+                  }}
                 />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-smooth">
                   <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">

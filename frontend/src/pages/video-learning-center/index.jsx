@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Header from "../../components/ui/Header";
 import SearchBar from "./components/SearchBar";
@@ -9,8 +9,8 @@ import TopicCard from "./components/TopicCard";
 import RelatedVideos from "./components/RelatedVideos";
 import Icon from "../../components/AppIcon";
 import Image from "../../components/AppImage";
+import { toast } from "sonner";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
 const CHANNEL_ID = import.meta.env.VITE_CHANNEL_ID;
 
 const VideoLearningCenter = () => {
@@ -40,10 +40,11 @@ const VideoLearningCenter = () => {
     const fetchChannelInfo = async () => {
       try {
         const res = await fetch(
-          "http://localhost:4029/api/v1/json/channel.json"
+          `${import.meta.env.VITE_BDOMAIN}json/channel.json`
         );
 
         let data = await res.json();
+        toast.success("Channel info found successfully.");
         const channel = data[0];
 
         setChannelInfo({
@@ -60,28 +61,9 @@ const VideoLearningCenter = () => {
           viewCount: channel?.statistics?.viewCount,
           videoCount: channel?.statistics?.videoCount,
           banner: [
-            channel?.snippet?.thumbnails?.default?.url,
-            channel?.snippet?.thumbnails?.medium?.url,
-            channel?.snippet?.thumbnails?.high?.url,
             "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=1200&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=120&h=30&fit=crop",
           ],
         });
-        // setChannelInfo({
-        //   name: "Mathematics For All",
-        //   handle: "@mathematicsforall9108",
-        //   owner: "Samir Kumar Pandey",
-        //   channelId: channel?.id ?? CHANNEL_ID,
-        //   title: channel?.snippet.title,
-        //   description: channel?.snippet?.description,
-        //   avatar: "/assets/images/logo.png",
-        //   subscriberCount: channel?.statistics?.subscriberCount,
-        //   videoCount: channel?.statistics?.videoCount,
-        //   banner: [
-        //     "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=1200&h=300&fit=crop",
-        //     "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=120&h=30&fit=crop",
-        //   ],
-        // });
       } catch (error) {
         console.error("Error fetching channel info:", error);
       }
@@ -99,9 +81,8 @@ const VideoLearningCenter = () => {
 
   // };
 
-  let [rotatingBanner, setRotatingBanner] = useState(
-    "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?w=1200&h=300&fit=crop"
-  );
+  let [rotatingBanner, setRotatingBanner] = useState(channelInfo.banner[0]);
+
   useEffect(() => {
     let i = 0;
     let timer = setInterval(() => {
@@ -120,10 +101,11 @@ const VideoLearningCenter = () => {
     const fetchVideos = async () => {
       try {
         const res = await fetch(
-          "http://localhost:4029/api/v1/json/videos.json" // `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10``https://www.googleapis.com/youtube/v3/search?key=AIzaSyC4CmvLNvIsNNNz1Xf5J6avtBdA8izw2go&channelId=UCAbXT1aYSDiXHHkakobyLsg&part=snippet,id&order=date&maxResults=30`
+          `${import.meta.env.VITE_BDOMAIN}json/videos.json`
         );
 
         const data = (await res.json()) ?? [];
+        toast.success("Videos Fetched successfully.");
 
         const formattedVideos = data.map((item, idx) => ({
           id: idx,

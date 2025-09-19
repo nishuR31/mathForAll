@@ -29,6 +29,7 @@ userRouter.delete("/del", auth(true), del);
 userRouter.get("/forgot", forgotPass);
 userRouter.post("/otp", verifyOtp);
 userRouter.patch("/change-pass", changePass);
-userRouter.get("/password-less-login", passwordLessMail, passwordLessLogin);
+userRouter.get("/password-less-mail", passwordLessMail);
+userRouter.get("/password-less-login", passwordLessLogin);
 
 export default userRouter;

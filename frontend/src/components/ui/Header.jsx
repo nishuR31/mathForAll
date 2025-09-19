@@ -17,6 +17,7 @@ const Header = () => {
     { label: "Teachers", path: "/teachers-showcase", icon: "Users" },
     { label: "About", path: "/owner-information", icon: "Info" },
     { label: "Help", path: "/information-hub", icon: "HelpCircle" },
+    { label: "Profile", path: "/me", icon: "User" },
   ];
 
   useEffect(() => {

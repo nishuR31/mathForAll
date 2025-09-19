@@ -164,8 +164,8 @@ const HomeDashboard = () => {
 
             <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
               <p>
-                &copy; {new Date()?.getFullYear()} Mathematics for All. All rights
-                reserved. Made with ❤️ for education.
+                &copy; {new Date()?.getFullYear()} Mathematics for All. All
+                rights reserved. Made with ❤️ for education.
               </p>
             </div>
           </div>

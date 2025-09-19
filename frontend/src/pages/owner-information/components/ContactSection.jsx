@@ -55,7 +55,7 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e?.preventDefault();
     // Mock form submission 
-    let res = await fetch("http://localhost:4029/api/v1/info/contact", {
+    let res = await fetch(`${import.meta.env.VITE_BDOMAIN}info/contact`, {
       method: "POST", // important
       headers: {
         "Content-Type": "application/json",
@@ -72,13 +72,13 @@ const ContactSection = () => {
     //   body: JSON.stringify(formData), // convert JS object to JSON
     // });
     let data = await res.json();
-
     if (!data.success) {
       console.log("Mail failed to send.");
+      toast.error("failed to send Mail")
     }
 
-    console.log("Form submitted:", formData);
     console.log("Thank you for your message! I'll get back to you soon.");
+    toast.success("Thank you for your message! I'll get back to you soon.");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 

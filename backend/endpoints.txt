@@ -34,3 +34,11 @@
 
 http://localhost:4029/api/v1/json/video.json
 http://localhost:4029/api/v1/json/channel.json
+
+
+
+toast("Default toast");
+toast.success("Success message");
+toast.error("Error message");
+toast.warning("Warning message");
+toast.info("Info message");

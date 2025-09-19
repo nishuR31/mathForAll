@@ -132,7 +132,7 @@ const ContactSupportSection = () => {
           Thank You for Using Mathematics for All
         </h3>
         <p className="text-muted-foreground max-w-md mx-auto">
-          i am committed to providing free, accessible mathematics education for everyone. 
+          I am committed to providing free, accessible mathematics education for everyone. 
           Happy learning!
         </p>
       </div>
