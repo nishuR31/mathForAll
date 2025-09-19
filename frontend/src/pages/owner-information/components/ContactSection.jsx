@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Icon from "../../../components/AppIcon";
 import Button from "../../../components/ui/Button";
 import Input from "../../../components/ui/Input";
+import axios from "axios";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -54,15 +55,18 @@ const ContactSection = () => {
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
-    // Mock form submission 
-    let res = await fetch(`${import.meta.env.VITE_BDOMAIN}info/contact`, {
-      method: "POST", // important
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // body: formData, // convert JS object to JSON
-      body: JSON.stringify(formData), // convert JS object to JSON
-    });
+    // Mock form submission
+    let res = await axios.post(
+      `${import.meta.env.VITE_BDOMAIN}info/contact`,
+      { formData },
+      {
+        method: "POST", // important
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: formData, // convert JS object to JSON
+      }
+    );
     // let res = await fetch("http://localhost:4029/api/v1/info/contact", {
     //   method: "POST", // important
     //   headers: {
@@ -74,7 +78,7 @@ const ContactSection = () => {
     let data = await res.json();
     if (!data.success) {
       console.log("Mail failed to send.");
-      toast.error("failed to send Mail")
+      toast.error("failed to send Mail");
     }
 
     console.log("Thank you for your message! I'll get back to you soon.");
