@@ -6,7 +6,13 @@ import ApiResponse from "../utils/apiResponse.js";
 import codes from "../utils/statusCodes.js";
 import hideEmail from "../utils/hideEmail.js";
 import isEmpty from "../utils/isEmpty.js";
-import { tokens } from "../utils/tokenGenerator.js";
+import {
+  tokens,
+  accessToken,
+  verifyRefresh,
+  verifyAccess,
+  refreshToken,
+} from "../utils/tokenGenerator.js";
 import cookieOptions from "../utils/cookieOptions.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import mongoose from "mongoose";
@@ -483,7 +489,6 @@ export let refresh = asyncHandler(async (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////
 
 // helper for OTP expiry time
-
 export const forgotPass = asyncHandler(async (req, res) => {
   const { email } = req.body;
 
@@ -538,8 +543,6 @@ export const forgotPass = asyncHandler(async (req, res) => {
 `,
   });
 
-  localStorage.setItem("email", email);
-
   return res
     .status(codes.ok)
     .json(new ApiResponse("OTP sent to your email.", codes.ok).res());
@@ -548,22 +551,23 @@ export const forgotPass = asyncHandler(async (req, res) => {
 ////////////////////////////////////////////////////////
 
 export const verifyOtp = asyncHandler(async (req, res) => {
-  const { otp } = req.body;
+  const { otp, email } = req.body;
 
-  const user = await User.findOne({ email: localStorage.getItem("email") });
+  const user = await User.findOne({ email });
+  // const user = await User.findOne({ email: localStorage.getItem("email") });
   if (!user) {
     return res
       .status(codes.notFound)
       .json(new ApiErrorResponse("Email not found.", codes.notFound).res());
   }
 
-  if (!bcrypt.compare(user.otp.code, otp)) {
+  if (!bcrypt.compare(otp, user.otp.code)) {
     return res
       .status(codes.conflict)
       .json(new ApiErrorResponse("Invalid otp.", codes.conflict).res());
   }
 
-  if (user.otp.expiry > Date.now()) {
+  if (user.otp.expiry < Date.now()) {
     return res
       .status(codes.conflict)
       .json(new ApiErrorResponse("OTP expired.", codes.conflict).res());
@@ -580,9 +584,10 @@ export const verifyOtp = asyncHandler(async (req, res) => {
 ////////////////////////////////////////////////////////
 
 export const changePass = asyncHandler(async (req, res) => {
-  const { password } = req.body;
+  const { password, email } = req.body;
 
-  const user = await User.findOne({ email: localStorage.getItem("email") });
+  const user = await User.findOne({ email });
+  // const user = await User.findOne({ email: localStorage.getItem("email") });
   if (!user) {
     return res
       .status(codes.notFound)
@@ -676,7 +681,7 @@ export const changePass = asyncHandler(async (req, res) => {
   user.otp.verified = false;
   await user.save();
   await mail({
-    to: localStorage.getItem("email"),
+    to: email,
     subject: "Mathematics for All - Password Change Done",
     text: `Your password is successfully changed.`,
     html: `<!DOCTYPE html>
@@ -690,7 +695,7 @@ export const changePass = asyncHandler(async (req, res) => {
   <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
     <h2 style="color: #d9534f;">Your password is successfully changed</h2>
     <p style="font-size: 15px; color: #333;">
-      If this was not done by you, please <a href="https://xground.com/reset-password" style="color: #007bff; text-decoration: none;">reset your password immediately</a> and contact our support team.
+      If this was not done by you, please <a href="https://mathematics-for-all.vercel.app/reset-password" style="color: #007bff; text-decoration: none;">reset your password immediately</a> and contact our support team.
     </p>
     <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
     <p style="font-size: 13px; color: #666;">
@@ -703,8 +708,6 @@ export const changePass = asyncHandler(async (req, res) => {
 `,
   });
 
-  localStorage.clear();
-
   return res
     .status(codes.ok)
     .json(
@@ -713,6 +716,8 @@ export const changePass = asyncHandler(async (req, res) => {
 });
 
 ///////////////////////////////////////////////////////////////////////////////
+
+let q;
 
 export const passwordLessMail = asyncHandler(async (req, res, next) => {
   let { email } = req.params;
@@ -723,9 +728,9 @@ export const passwordLessMail = asyncHandler(async (req, res, next) => {
       .json(new ApiErrorResponse("Email not found.", codes.notFound).res());
   }
 
-  let token = accessToken({ _id: user._id });
+  let token = accessToken({ _id: user._id, email: user.email });
+  q = refreshToken({ payload: "payload" });
 
-  localStorage.setItem("email", email);
   await mail({
     to: email,
     subject: "Mathematics for All - Login",
@@ -742,7 +747,7 @@ export const passwordLessMail = asyncHandler(async (req, res, next) => {
     
     <h2 style="color: #007bff; margin-bottom: 20px;">Click below to login</h2>
 
-    <a href="https://mathematics-for-all.onrender.com/api/v1/sir/password-less-login?z0mp0tmU2RUOhDo2b10hl21VR3mryg2UuCGhHEer=${token}" 
+    <a href="https://mathematics-for-all.onrender.com/api/v1/sir/password-less-login?${q}=${token}"
        style="display: inline-block; background-color: #28a745; color: #fff; 
               padding: 12px 24px; border-radius: 6px; text-decoration: none; 
               font-weight: bold; font-size: 16px;">
@@ -751,7 +756,7 @@ export const passwordLessMail = asyncHandler(async (req, res, next) => {
 
     <p style="font-size: 15px; color: #333; margin-top: 20px;">
       If this action was not done by you, please 
-      <a href="https://mathematics.vercel.app/reset-password" style="color: #d9534f; text-decoration: none;">
+      <a href="https://mathematics-for-all.vercel.app/reset-password" style="color: #d9534f; text-decoration: none;">
         reset your password immediately
       </a> and contact our support team.
     </p>
@@ -776,7 +781,7 @@ export const passwordLessMail = asyncHandler(async (req, res, next) => {
 //////////////////////////////////////////////////////////
 
 export const passwordLessLogin = asyncHandler(async (req, res) => {
-  let { z0mp0tmU2RUOhDo2b10hl21VR3mryg2UuCGhHEer: token } = req.params;
+  let { q: token } = req.query;
 
   let decoded;
   try {
@@ -786,7 +791,8 @@ export const passwordLessLogin = asyncHandler(async (req, res) => {
       .status(codes.badRequest)
       .json(new ApiErrorResponse("Token invalid", codes.badRequest).res());
   }
-  const user = await User.findOne({ email: localStorage.getItem("email") });
+  const user = await User.findOne({ email: decoded.email });
+  // const user = await User.findOne({ email: localStorage.getItem("email") });
   if (!user) {
     return res
       .status(codes.notFound)
@@ -800,8 +806,6 @@ export const passwordLessLogin = asyncHandler(async (req, res) => {
         new ApiErrorResponse("Mismatch token, try again", codes.conflict).res()
       );
   }
-
-  localStorage.clear();
 
   return res
     .status(codes.ok)
