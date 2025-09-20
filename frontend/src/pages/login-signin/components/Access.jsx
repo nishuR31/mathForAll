@@ -116,7 +116,7 @@ const Access = () => {
                 <Link
                   to="/"
                   onClick={() => {
-                    window.history?.back();
+                    navigate("/");
                     toast.success("Back to previous page.");
                   }}
                   className="text-primary hover:underline"
