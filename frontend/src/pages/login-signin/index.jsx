@@ -1,38 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { toast } from "sonner"; // assuming you’re using react-toastify
+import { toast } from "sonner";
 
 const Me = () => {
   const navigate = useNavigate();
-  const [msg, setMsg] = useState("Checking for existing profile...");
+  const [msg, setMsg] = useState("Checking for permission...");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_BDOMAIN}sir/me`,
-          { withCredentials: true, validateStatus: () => true } // prevent axios from throwing on 401
-        );
+    const timer = setTimeout(() => {
+      setLoading(false);
+      toast.warning("Permission required.");
+      navigate("/access");
+    }, 3000);
 
-        if (res.success ) {
-          setMsg("Existing Profile found, redirecting to profile.");
-          toast.success("Profile found, redirecting to profile");
-          setTimeout(() => navigate("/me"), 5000);
-        } else {
-          setMsg("No existing profile found, redirecting to login.");
-          toast.error("Profile not found, redirecting to login");
-          setTimeout(() => navigate("/login"), 5000);
-        }
-      } catch (err) {
-        console.log("Error checking session, redirecting to login");
-        setMsg("Error checking session, redirecting to login.");
-        toast.error("Error checking session, redirecting to login");
-        setTimeout(() => navigate("/login"), 5000);
-      }
-    };
-
-    checkAuth();
+    return () => clearTimeout(timer); // cleanup if user leaves early
   }, [navigate]);
 
   return (
@@ -41,7 +23,7 @@ const Me = () => {
         Welcome to Mathematics for All
       </h1>
       <hr className="my-6 w-full max-w-md" />
-      <h1 className="text-xl font-semibold">{msg}</h1>
+      {loading && <h1 className="text-xl font-semibold">{msg}</h1>}
     </div>
   );
 };

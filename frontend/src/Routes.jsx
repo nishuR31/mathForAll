@@ -15,6 +15,7 @@ import ResetPasswordPage from "pages/login-signin/components/Reset";
 import ForgotPassword from "pages/login-signin/components/ForgotPass";
 import PasswordLessPage from "pages/login-signin/components/Passless";
 import Me from "pages/login-signin";
+import Access from "pages/login-signin/components/Access";
 
 const Routes = () => {
   return (
@@ -39,6 +40,7 @@ const Routes = () => {
           <Route path="/reset" element={<ResetPasswordPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/password-less" element={<PasswordLessPage />} />
+          <Route path="/access" element={<Access />} />
 
           <Route path="*" element={<NotFound />} />
         </RouterRoutes>

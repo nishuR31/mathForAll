@@ -13,38 +13,32 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const user = await axios.get(`${import.meta.env.VITE_BDOMAIN}sir/me`, {
-          withCredentials: true,
-        }); // fetch current logged-in user
-        user ? navigate("/profile") : navigate("/login"); // redirect to profile if already logged in
-      } catch (err) {
-        // not logged in, stay on auth pages
-        console.log("No active session");
-      }
-    };
-
-    checkAuth();
-  }, [navigate]);
-
-  // Fetch profile
-  useEffect(() => {
-    const fetchProfile = async () => {
+    const init = async () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_BDOMAIN}sir/me`, {
           withCredentials: true,
         });
-        setUser(res.data.data.user);
+        const userData = res?.data?.payload?.user;
+
+        if (!userData) {
+          navigate("/login");
+          return;
+        }
+
+        setUser(userData);
+        // navigate("/me");
+        toast.success("Welcome sir.");
       } catch (err) {
         console.error(err);
-        toast.error("Failed to load profile.");
+        toast.error("Not logged in. Please login.");
+        navigate("/login");
       } finally {
         setLoading(false);
       }
     };
-    fetchProfile();
-  }, []);
+
+    init();
+  }, [navigate]);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -54,11 +48,41 @@ const ProfilePage = () => {
       withCredentials: true,
     });
 
-    if (!res.success) {
-      toast.error(res.message);
+    if (!res.data?.success) {
+      toast.error(res.data?.message);
     }
     navigate("/");
     toast.success("You are logged out sir.");
+  };
+
+  const handleVideos = async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_BDOMAIN}info/refresh/videos`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    if (!res.data?.success) {
+      toast.error(res.data?.message);
+    }
+    navigate("/");
+    toast.success("Videos are refreshed..");
+  };
+
+  const handleChannel = async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_BDOMAIN}info/refresh/channel`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    if (!res.datda?.success) {
+      toast.error(res.data?.message);
+    }
+    navigate("/");
+    toast.success("Channel is refreshed..");
   };
 
   const handleReset = async () => {
@@ -66,8 +90,8 @@ const ProfilePage = () => {
       withCredentials: true,
     });
 
-    if (!res.success) {
-      toast.error(res.message);
+    if (!res.data?.success) {
+      toast.error(res.data?.message);
     }
     navigate("/me");
     toast.success("Password Reset successfully.");
@@ -86,8 +110,8 @@ const ProfilePage = () => {
         },
         { withCredentials: true }
       );
-      setMessage(res.data.message || "Profile updated successfully!");
-      toast.success(res.data.message || "Profile updated!");
+      setMessage(res.data?.message || "Profile updated successfully!");
+      toast.success(res.data?.message || "Profile updated!");
       setEditMode(false);
     } catch (err) {
       console.error(err);
@@ -183,22 +207,42 @@ const ProfilePage = () => {
           >
             Edit Profile
           </Button>
-          <Button
-            type="button"
-            variant="default"
-            className="mt-6"
-            onClick={() => handleReset()}
-          >
-            Reset Password
-          </Button>
-          <Button
-            type="button"
-            variant="default"
-            className="mt-6"
-            onClick={() => handleLogout()}
-          >
-            Logout
-          </Button>
+
+          <div>
+            {" "}
+            <Button
+              type="button"
+              variant="default"
+              className="mt-6"
+              onClick={() => handleReset()}
+            >
+              Reset Password
+            </Button>
+            <Button
+              type="button"
+              variant="default"
+              className="mt-6"
+              onClick={() => handleLogout()}
+            >
+              Logout
+            </Button>
+            <Button
+              type="button"
+              variant="default"
+              className="mt-6"
+              onClick={() => handleVideos()}
+            >
+              Refresh Videos
+            </Button>
+            <Button
+              type="button"
+              variant="default"
+              className="mt-6"
+              onClick={() => handleChannel()}
+            >
+              Refresh Channel
+            </Button>
+          </div>
         </div>
       )}
     </div>

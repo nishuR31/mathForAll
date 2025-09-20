@@ -26,7 +26,7 @@ userRouter.get("/logout", auth(false), logout);
 // userRouter.get("/refresh", auth(true), refresh);
 userRouter.patch("/update", auth(true), updateProfile);
 userRouter.delete("/del", auth(true), del);
-userRouter.get("/forgot", forgotPass);
+userRouter.post("/forgot", forgotPass);
 userRouter.post("/otp", verifyOtp);
 userRouter.patch("/change-pass", changePass);
 userRouter.get("/password-less-mail", passwordLessMail);
