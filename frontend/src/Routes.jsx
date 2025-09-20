@@ -16,6 +16,8 @@ import ForgotPassword from "pages/login-signin/components/ForgotPass";
 import PasswordLessPage from "pages/login-signin/components/Passless";
 import Me from "pages/login-signin";
 import Access from "pages/login-signin/components/Access";
+import ProfilePage from "pages/login-signin/components/Profile";
+import Auth from "pages/login-signin";
 
 const Routes = () => {
   return (
@@ -34,7 +36,8 @@ const Routes = () => {
           <Route path="/teachers-showcase" element={<TeachersShowcase />} />
           <Route path="/information-hub" element={<InformationHub />} />
           <Route path="/notes-library" element={<NotesLibrary />} />
-          <Route path="/me" element={< Me />} />
+          <Route path="/me" element={<ProfilePage />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />

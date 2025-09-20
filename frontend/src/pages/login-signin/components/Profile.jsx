@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../../../components/ui/Button";
 import { toast } from "sonner";
@@ -20,7 +20,7 @@ const ProfilePage = () => {
         });
         const userData = res?.data?.payload?.user;
 
-        if (!userData) {
+        if (!res) {
           navigate("/login");
           return;
         }

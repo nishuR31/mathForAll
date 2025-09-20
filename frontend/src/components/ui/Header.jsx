@@ -15,9 +15,9 @@ const Header = () => {
     { label: "Notes", path: "/notes-library", icon: "BookOpen" },
     { label: "Videos", path: "/video-learning-center", icon: "Play" },
     { label: "Teachers", path: "/teachers-showcase", icon: "Users" },
-    { label: "About", path: "/owner-information", icon: "Info" },
     { label: "Help", path: "/information-hub", icon: "HelpCircle" },
-    { label: "Teacher", path: "/me", icon: "User" },
+    { label: "About", path: "/owner-information", icon: "UserRoundSearch" },
+    { label: "Faculty", path: "/auth", icon: "ShieldUser" },
   ];
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const Me = () => {
+const Auth = () => {
   const navigate = useNavigate();
   const [msg, setMsg] = useState("Checking for permission...");
   const [loading, setLoading] = useState(true);
@@ -28,4 +28,4 @@ const Me = () => {
   );
 };
 
-export default Me;
+export default Auth;

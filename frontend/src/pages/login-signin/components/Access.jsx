@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -134,6 +132,15 @@ const Access = () => {
                 }}
               >
                 Go Back?
+              </p>
+              <p
+                className="mt-2 hover:underline text-center"
+                onClick={() => {
+                  navigate("/login");
+                  toast.success("Back to previous page.");
+                }}
+              >
+                Login?
               </p>
             </div>
           </form>
