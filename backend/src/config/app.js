@@ -43,16 +43,9 @@ let baseRoute = "/api/v1";
 app.use(`${baseRoute}/sir`, userRouter);
 app.use(`${baseRoute}/info`, infoRouter);
 
-// ...
 
-app.use(
-  `${baseRoute}/json`,
-  express.static(
-    path.join(path.dirname(fileURLToPath(import.meta.url)), "../data")
-  )
-);
 
-app.all("/*splat", (req, res) => {
+app.all("/{*splat}", (req, res) => {
   res
     .status(codes.notFound)
     .json(new ApiErrorResponse("Invalid route..", codes.notFound).res());

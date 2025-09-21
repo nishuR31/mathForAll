@@ -10,6 +10,7 @@ import RelatedVideos from "./components/RelatedVideos";
 import Icon from "../../components/AppIcon";
 import Image from "../../components/AppImage";
 import { toast } from "sonner";
+import axios from "axios"
 
 const CHANNEL_ID = import.meta.env.VITE_CHANNEL_ID;
 
@@ -47,9 +48,8 @@ const VideoLearningCenter = () => {
           toast.error("Failed to fetch channel info.");
           return;
         }
-        let data = res.data?.payload?.channel;
+        let channel = res.data?.payload?.channel[0];
         toast.success("Channel info found successfully.");
-        const channel = data[0];
 
         setChannelInfo({
           name: "Mathematics For All",
@@ -112,8 +112,9 @@ const VideoLearningCenter = () => {
           return;
         }
 
-        const data = res.data.payload?.videos;
+        const videos = res.data.payload?.videos;
         toast.success("Videos Fetched successfully.");
+        let data=videos.filter(video=>video.id.kind==="youtube#video")
 
         const formattedVideos = data.map((item, idx) => ({
           id: idx,

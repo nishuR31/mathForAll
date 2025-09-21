@@ -356,20 +356,18 @@ const FeaturedVideosSection = () => {
                 />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-smooth">
                   <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                    <Icon name="Play" size={24} color="white" />
+                    <Icon name="Play" size={24} color="white"/>
                   </div>
                 </div>
               </div>
 
               <div className="p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                    {video?.snippet?.title}
-                  </span>
+                  <div className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded" dangerouslySetInnerHTML={{ __html: video?.snippet?.title }} />
                 </div>
 
                 <h3 className="text-lg font-semibold text-card-foreground mb-2 line-clamp-2">
-                  {video?.snippet?.title}
+                  <div dangerouslySetInnerHTML={{__html:video?.snippet?.title}} />
                 </h3>
 
                 <p className="text-muted-foreground text-sm mb-3 line-clamp-2">

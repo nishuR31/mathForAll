@@ -5,31 +5,31 @@ const StatsSection = () => {
   const stats = [
     {
       icon: "BookOpen",
-      value: "150+",
+      value: "10+",
       label: "Study Notes",
       description: "Comprehensive materials across all math topics"
     },
     {
       icon: "Play",
-      value: "200+",
+      value: "20+",
       label: "Video Lessons",
       description: "Hours of engaging educational content"
     },
     {
       icon: "Users",
-      value: "120",
+      value: "1",
       label: "Expert Teacher",
       description: "Qualified educator with years of experience"
     },
     {
       icon: "Download",
-      value: "50K+",
+      value: "1K+",
       label: "Downloads",
       description: "Students have accessed our resources"
     },
     {
       icon: "Globe",
-      value: "25+",
+      value: "2+",
       label: "Countries",
       description: "Students learning worldwide"
     },
@@ -78,9 +78,10 @@ const StatsSection = () => {
         <div className="mt-16 bg-card border border-border rounded-lg p-8 text-center">
           <div className="max-w-3xl mx-auto">
             <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
-                <Icon name="Heart" size={40} color="white" />
+              <div className="w-20 h-20 bg-gradient-to-l animate-spin from-muted via-primary to-muted rounded-full flex items-center justify-center">
+                {/* <Icon name="Heart" size={40} color="white" className="!animate-none" /> */}
               </div>
+                <Icon name="Heart" size={40} color="white" className=" mt-5 absolute animate-none" />
             </div>
             
             <h3 className="text-2xl lg:text-3xl font-bold text-card-foreground mb-4">

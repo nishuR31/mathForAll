@@ -4,6 +4,8 @@ import ApiResponse from "../utils/apiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { mail } from "../utils/mailer.js";
 import codes from "../utils/statusCodes.js";
+import axios from "axios";
+import {red} from "../config/redis.js"
 
 export let refreshChannel = asyncHandler(async (req, res) => {
   // Axios request
@@ -23,18 +25,21 @@ export let refreshChannel = asyncHandler(async (req, res) => {
     );
   }
 
-  // Update channel in DB
+ 
+
   let channel = await Channel.findOne({});
   if (!channel) {
     channel = new Channel(); // if no channel exists, create one
   }
   channel.data = response.data.items; // store directly, no stringify
   await channel.save();
+  await red.hSet(`info-${process.env.KEY}`,"channel",JSON.stringify( channel.data))
 
   // Send response
   return res.status(codes.ok).json(
     new ApiResponse("Channel found.", codes.ok, {
-      channel: response.data.items, // already JSON
+      quantity:channel.data.length,
+      channel: channel.data, // already JSON
     }).res()
   );
 });
@@ -64,18 +69,34 @@ export let refreshVideos = asyncHandler(async (req, res) => {
   }
   videos.data = response.data.items; // store directly, no stringify
   await videos.save();
+  await red.hSet(`info-${process.env.KEY}`,"videos",JSON.stringify( videos.data))
 
   // Send response
   return res.status(codes.ok).json(
     new ApiResponse("Videos found.", codes.ok, {
-      videos: response.data.items, // already JSON
+          quantity:videos.data.length,
+          videos: videos.data, // already JSON
     }).res()
   );
 });
 
+////////////////////////////////////////////////////////////////
+
 export let fetchChannel = asyncHandler(async (req, res) => {
-  let res = await Channel.findOne({});
-  if (!res) {
+
+   let cache=await red.hGet(`info-${process.env.KEY}`,"channel")
+  // Update channel in DB
+    let exists=cache && JSON.parse(cache)
+
+  if(exists){  return res.status(codes.ok).json(
+    new ApiResponse("Channel found.", codes.ok, {
+      quantity:exists.length,
+      channel: exists, // already JSON
+    }).res()
+  );}
+
+  let response = await Channel.findOne({});
+  if (!response) {
     return res.status(codes.notFound).json(
       new ApiResponse("No Channel found.", codes.notFound, {
         channel: [],
@@ -85,14 +106,25 @@ export let fetchChannel = asyncHandler(async (req, res) => {
 
   return res.status(codes.ok).json(
     new ApiResponse("Channel found.", codes.ok, {
-      channel: res.data,
+      quantity:response.data.length,
+      channel: response.data,
+
     }).res()
   );
 });
 
 export let fetchVideo = asyncHandler(async (req, res) => {
-  let res = await Videos.findOne({});
-  if (!res) {
+     let cache=await red.hGet(`info-${process.env.KEY}`,"videos")
+  // Update channel in DB
+  let exists=cache&&JSON.parse(cache)
+  if(exists){  return res.status(codes.ok).json(
+    new ApiResponse("Videos found.", codes.ok, {
+      quantity:exists.length,
+      videos: exists, // already JSON
+    }).res()
+  );}
+  let response = await Videos.findOne({});
+  if (!response) {
     return res.status(codes.notFound).json(
       new ApiResponse("No Videos found.", codes.notFound, {
         videos: [],
@@ -102,7 +134,8 @@ export let fetchVideo = asyncHandler(async (req, res) => {
 
   return res.status(codes.ok).json(
     new ApiResponse("Videos found.", codes.ok, {
-      videos: res.data,
+      quantity:response.data.length,
+      videos: response.data,
     }).res()
   );
 });
@@ -121,6 +154,13 @@ export const ping = asyncHandler(async (req, res) => {
 
 export const contact = asyncHandler(async (req, res) => {
   let { name, email, subject, message } = req.body;
+
+  if (!name || !email || !subject || !message) {
+  return res.status(codes.badRequest).json(
+    new ApiErrorResponse("Missing required fields.", codes.badRequest).res()
+  );
+}
+
 
   await mail({
     to: process.env.MAIL,

@@ -11,7 +11,7 @@ const QuickAccessPanel = () => {
       icon: "BookOpen",
       path: "/notes-library",
       color: "primary",
-      stats: "150+ Notes"
+      stats: "10+ Notes"
     },
     {
       title: "Video Lessons",
@@ -19,7 +19,7 @@ const QuickAccessPanel = () => {
       icon: "Play",
       path: "/video-learning-center",
       color: "accent",
-      stats: "200+ Videos"
+      stats: "20+ Videos"
     },
     {
       title: "Meet our Teacher",

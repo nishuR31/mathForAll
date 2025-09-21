@@ -1,10 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 import Icon from "../../../components/AppIcon";
 
 const FeaturedNotesSection = () => {
-  let available = false;
+  let [available,setAvailable]=useState(false)
   const featuredNotes = [
     {
       id: 1,
@@ -56,23 +56,25 @@ const FeaturedNotesSection = () => {
 
   return (
     <section className="py-16 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+      <div className="w-full mx-auto px-4 lg:px-6">
+      {/* <div className="max-w-7xl mx-auto px-4 lg:px-6"> */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4">
             Featured Study Notes
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive study materials created by expert educators, available
+            Comprehensive study materials created by expert educator, available
             for immediate download
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="flex flex-wrap  justify-center flex-row gap-4 mb-5  ">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"> */}
           {available ? (
             featuredNotes?.map((note) => (
               <div
                 key={note?.id}
-                className="bg-card border border-border rounded-lg p-6 hover:shadow-elevated transition-smooth"
+                className="bg-card border border-border shadow-lg rounded-xl w-1/2  md:w-1/3 lg:1/4 p-3 hover:shadow-elevated transition-smooth"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-2">
@@ -91,7 +93,7 @@ const FeaturedNotesSection = () => {
                       {note?.level}
                     </span>
                   </div>
-                  <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                  <span className="text-xs text-muted-foreground  bg-muted px-2 py-1 rounded">
                     {note?.subject}
                   </span>
                 </div>
@@ -144,7 +146,11 @@ const FeaturedNotesSection = () => {
               </div>
             ))
           ) : (
-            <Icon name="Spinner" size={20} color="white" />
+<div className="  transition-all delay-[3s] bg-white ">
+  <div className="flex justify-center flex-wrap animate-pulse  text-center ">
+    <Icon name="Loader" size={40} className="animate-spin text-destructive hover:text-primary" onClick={()=>setAvailable(!available)} />
+  </div>
+</div>
           )}
         </div>
 

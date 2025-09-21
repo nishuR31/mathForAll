@@ -24,7 +24,7 @@ const TeacherCard = ({ teacher }) => {
             <Image
               src={img}
               alt={`${teacher?.name} - Mathematics Teacher`}
-              className={`object-cover  transition-all delay-[3000]  duration-3000 bg-transparent rounded-xl`}
+              className={`object-cover  transition-all delay-3  duration-3 bg-transparent rounded-xl`}
             />
           </div>
         </div>

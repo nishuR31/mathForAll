@@ -7,12 +7,49 @@ import FeaturedVideosSection from "./components/FeaturedVideosSection";
 import QuickAccessPanel from "./components/QuickAccessPanel";
 import StatsSection from "./components/StatsSection";
 import Icon from "../../components/AppIcon";
+import {toast} from "sonner"
 
 const HomeDashboard = () => {
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
+
+
+
+const handleShare = async () => {
+  const url = "http://localhost:4038";
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Check out this awesome free website to study mathematics..!",
+        text: "Mathematics for All by Dr. Samir Kumar Pandey",
+        url: url
+      });
+      toast.success("Content shared successfully!");
+
+      // Optional fallback: copy URL to clipboard
+      await navigator.clipboard.writeText(url);
+      console.log("URL copied to clipboard as fallback.");
+      toast.success("URL copied to clipboard as fallback.");
+    } catch (error) {
+      console.error("Error sharing:", error);
+      toast.error("Error sharing:", error);
+    }
+  } else {
+    // Fallback if Web Share API not supported
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.warn("URL copied to clipboard: " + url);
+    } catch {
+      toast.error("Web Share API not supported and failed to copy URL.");
+      console.error("Web Share API not supported and failed to copy URL.");
+    }
+  }
+};
+
+
 
   return (
     <>
@@ -83,14 +120,11 @@ const HomeDashboard = () => {
                   mathematical learning.
                 </p>
                 <div className="flex space-x-4">
-                  <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-smooth cursor-pointer">
-                    <Icon name="Mail" size={20} />
+                  <div className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-smooth cursor-pointer">
+                    <a href="mailto:backendteam.management@gmail.com"> <Icon name="Mail" size={20}   /> </a>
                   </div>
-                  <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-smooth cursor-pointer">
-                    <Icon name="MessageCircle" size={20} />
-                  </div>
-                  <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-smooth cursor-pointer">
-                    <Icon name="Share2" size={20} />
+                  <div className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-smooth cursor-pointer">
+                    <Icon name="Share2" size={20} onClick={handleShare} />
                   </div>
                 </div>
               </div>

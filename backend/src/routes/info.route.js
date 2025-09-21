@@ -12,8 +12,10 @@ import {
 
 let infoRouter = new express.Router();
 
-infoRouter.get("/refresh/channel", auth(true), refreshChannel);
-infoRouter.get("/refresh/videos", auth(true), refreshVideos);
+// infoRouter.get("/refresh/channel", auth(true), refreshChannel);
+// infoRouter.get("/refresh/videos", auth(true), refreshVideos);
+infoRouter.get("/refresh/channel", auth(false), refreshChannel);
+infoRouter.get("/refresh/videos", auth(false), refreshVideos);
 infoRouter.get("/fetch/channel", fetchChannel);
 infoRouter.get("/fetch/videos", fetchVideo);
 infoRouter.get("/health", health);
