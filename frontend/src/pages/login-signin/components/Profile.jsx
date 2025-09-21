@@ -66,7 +66,6 @@ const ProfilePage = () => {
     if (!res.data?.success) {
       toast.error(res.data?.message);
     }
-    navigate("/");
     toast.success("Videos are refreshed..");
   };
 
@@ -81,7 +80,6 @@ const ProfilePage = () => {
     if (!res.datda?.success) {
       toast.error(res.data?.message);
     }
-    navigate("/");
     toast.success("Channel is refreshed..");
   };
 

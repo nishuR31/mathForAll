@@ -1,21 +1,110 @@
+import Channel from "../models/channel.model.js";
+import Videos from "../models/videos.model.js";
 import ApiResponse from "../utils/apiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
-import { channelData, videoData } from "../utils/channelEntry.js";
 import { mail } from "../utils/mailer.js";
 import codes from "../utils/statusCodes.js";
 
-export let videoEntry = asyncHandler(async (req, res) => {
-  let done = await videoData();
-  done
-    ? console.log(`Video set refreshed.`)
-    : console.error(`Error refreshing video Set`);
+export let refreshChannel = asyncHandler(async (req, res) => {
+  // Axios request
+  let response = await axios.get(
+    `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${process.env.CHANNEL_ID}&key=${process.env.API_KEY}`
+  );
+
+  if (
+    !response.data ||
+    !response.data.items ||
+    response.data.items.length === 0
+  ) {
+    return res.status(codes.notFound).json(
+      new ApiResponse("No Channel found.", codes.notFound, {
+        channel: [],
+      }).res()
+    );
+  }
+
+  // Update channel in DB
+  let channel = await Channel.findOne({});
+  if (!channel) {
+    channel = new Channel(); // if no channel exists, create one
+  }
+  channel.data = response.data.items; // store directly, no stringify
+  await channel.save();
+
+  // Send response
+  return res.status(codes.ok).json(
+    new ApiResponse("Channel found.", codes.ok, {
+      channel: response.data.items, // already JSON
+    }).res()
+  );
 });
 
-export let channelEntry = asyncHandler(async (req, res) => {
-  let done = await channelData();
-  done
-    ? console.log(`Channel set refreshed.`)
-    : console.error(`Error refreshing channel data`);
+export let refreshVideos = asyncHandler(async (req, res) => {
+  // Axios request
+  let response = await axios.get(
+    `https://www.googleapis.com/youtube/v3/search?key=${process.env.API_KEY}&channelId=${process.env.CHANNEL_ID}&part=snippet,id&order=date&maxResults=30`
+  );
+
+  if (
+    !response.data ||
+    !response.data.items ||
+    response.data.items.length === 0
+  ) {
+    return res.status(codes.notFound).json(
+      new ApiResponse("No Videos found.", codes.notFound, {
+        videos: [],
+      }).res()
+    );
+  }
+
+  // Update channel in DB
+  let videos = await Videos.findOne({});
+  if (!videos) {
+    videos = new Videos(); // if no channel exists, create one
+  }
+  videos.data = response.data.items; // store directly, no stringify
+  await videos.save();
+
+  // Send response
+  return res.status(codes.ok).json(
+    new ApiResponse("Videos found.", codes.ok, {
+      videos: response.data.items, // already JSON
+    }).res()
+  );
+});
+
+export let fetchChannel = asyncHandler(async (req, res) => {
+  let res = await Channel.findOne({});
+  if (!res) {
+    return res.status(codes.notFound).json(
+      new ApiResponse("No Channel found.", codes.notFound, {
+        channel: [],
+      }).res()
+    );
+  }
+
+  return res.status(codes.ok).json(
+    new ApiResponse("Channel found.", codes.ok, {
+      channel: res.data,
+    }).res()
+  );
+});
+
+export let fetchVideo = asyncHandler(async (req, res) => {
+  let res = await Videos.findOne({});
+  if (!res) {
+    return res.status(codes.notFound).json(
+      new ApiResponse("No Videos found.", codes.notFound, {
+        videos: [],
+      }).res()
+    );
+  }
+
+  return res.status(codes.ok).json(
+    new ApiResponse("Videos found.", codes.ok, {
+      videos: res.data,
+    }).res()
+  );
 });
 
 // controllers/health.controller.js
@@ -23,28 +112,12 @@ export let channelEntry = asyncHandler(async (req, res) => {
 export const health = asyncHandler(async (req, res) => {
   return res
     .status(codes.ok)
-    .json(new ApiResponse("Server is running fine.", codes.ok).res());
+    .json(new ApiResponse("Server is healthy.", codes.ok).res());
 });
 
-// export const videos = asyncHandler(async (req, res) => {
-//   let response = await fetch("../data/videos.json");
-//   let data = await response.json();
-//   return res
-//     .status(codes.ok)
-//     .json(
-//       new ApiResponse("Videos found.", codes.ok, { videos: data.items }).res()
-//     );
-// });
-
-// export const channel = asyncHandler(async (req, res) => {
-//   let response = await fetch("../data/channel.json");
-//   let data = await response.json();
-//   return res
-//     .status(codes.ok)
-//     .json(
-//       new ApiResponse("Videos found.", codes.ok, { videos: data.items }).res()
-//     );
-// });
+export const ping = asyncHandler(async (req, res) => {
+  return res.status(codes.ok).json(new ApiResponse("pong", codes.ok).res());
+});
 
 export const contact = asyncHandler(async (req, res) => {
   let { name, email, subject, message } = req.body;

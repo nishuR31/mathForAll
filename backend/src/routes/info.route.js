@@ -1,21 +1,23 @@
 import express from "express";
 import auth from "../middleware/auth.middleware.js";
 import {
-  // channel,
-  channelEntry,
   contact,
+  fetchChannel,
+  fetchVideo,
   health,
-  videoEntry,
-  // videos,
+  ping,
+  refreshChannel,
+  refreshVideos,
 } from "../controllers/info.controller.js";
 
 let infoRouter = new express.Router();
 
-infoRouter.get("/refresh/videos", auth(true), videoEntry);
-infoRouter.get("/refresh/channel", auth(true), channelEntry);
-// infoRouter.get("/fetch/channel", channel);
-// infoRouter.get("/fetch/videos", videos);
+infoRouter.get("/refresh/channel", auth(true), refreshChannel);
+infoRouter.get("/refresh/videos", auth(true), refreshVideos);
+infoRouter.get("/fetch/channel", fetchChannel);
+infoRouter.get("/fetch/videos", fetchVideo);
 infoRouter.get("/health", health);
 infoRouter.post("/contact", contact);
+infoRouter.get("/ping", ping);
 
 export default infoRouter;

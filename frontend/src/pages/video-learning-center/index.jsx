@@ -39,11 +39,15 @@ const VideoLearningCenter = () => {
   useEffect(() => {
     const fetchChannelInfo = async () => {
       try {
-        const res = await fetch(
-          `${import.meta.env.VITE_BDOMAIN}json/channel.json`
+        const res = await axios.get(
+          `${import.meta.env.VITE_BDOMAIN}info/fetch/channel`
         );
 
-        let data = await res.json();
+        if (!res.data?.success) {
+          toast.error("Failed to fetch channel info.");
+          return;
+        }
+        let data = res.data?.payload?.channel;
         toast.success("Channel info found successfully.");
         const channel = data[0];
 
@@ -100,11 +104,15 @@ const VideoLearningCenter = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const res = await fetch(
-          `${import.meta.env.VITE_BDOMAIN}json/videos.json`
+        const res = await axios.get(
+          `${import.meta.env.VITE_BDOMAIN}info/fetch/videos`
         );
+        if (!res.data?.success) {
+          toast.error("Failed to fetch videos.");
+          return;
+        }
 
-        const data = (await res.json()) ?? [];
+        const data = res.data.payload?.videos;
         toast.success("Videos Fetched successfully.");
 
         const formattedVideos = data.map((item, idx) => ({
