@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-
+import bcrypt from "bcrypt";
 import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import { red } from "../config/redis.js";
 import ApiResponse from "../utils/apiResponse.js";
@@ -17,10 +17,26 @@ import cookieOptions from "../utils/cookieOptions.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import mongoose from "mongoose";
 import { mail } from "../utils/mailer.js";
+import driveLink from "../utils/driveLink.js";
+import json from "../utils/json.js";
+import { otp, expiry } from "../utils/OTP.js";
 
 export let register = asyncHandler(async (req, res) => {
+  let existingUser = await User.find();
+
+  if (existingUser[0]) {
+    return res
+      .status(codes.unauthorized)
+      .json(
+        new ApiErrorResponse(
+          "User exists, signup denied.",
+          codes.unauthorized
+        ).res()
+      );
+  }
+
   let { firstName, lastName, email, password, password2, userName } = req.body;
-  if (isEmpty([email, password, userName])) {
+  if (isEmpty([email, password, password2, userName])) {
     return res
       .status(codes.badRequest)
       .json(
@@ -28,7 +44,7 @@ export let register = asyncHandler(async (req, res) => {
       );
   }
 
-  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (!emailRegex.test(email)) {
     return res
@@ -159,6 +175,11 @@ export let register = asyncHandler(async (req, res) => {
       );
   }
 
+  if (req.body.photoUrl) {
+    user.photoUrl = driveLink(req.body.photoUrl, "view");
+    await user.save();
+  }
+
   return res.status(codes.created).json(
     new ApiResponse(
       "Account created and registered successfully,please return to login",
@@ -175,11 +196,14 @@ export let register = asyncHandler(async (req, res) => {
 /////////////////////////////////////////////////////////////////
 
 export let login = asyncHandler(async (req, res) => {
-  let exist = json.parse(await red.hGet(`user:${user._id}`, "login"));
+  let exist = json.parse(await red.hGet(`user:0000`, "login"));
+  console.log(req.user, exist);
   if (req.user || exist) {
     return res.status(codes.ok).json(
       new ApiResponse(
-        "User already logged in,try logging out before login again.",
+        `User already logged in, welcome ${
+          req.user.userName ?? exist.userName
+        }`,
         codes.ok,
         {
           user: {
@@ -191,7 +215,9 @@ export let login = asyncHandler(async (req, res) => {
     );
   }
   let { emailUser, password } = req.body;
-  if (!emailUser && !password) {
+  console.log("REQ.BODY:", req.body);
+
+  if (!emailUser || !password) {
     return res
       .status(codes.badRequest)
       .json(
@@ -202,11 +228,10 @@ export let login = asyncHandler(async (req, res) => {
       );
   }
 
-  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   let field = emailRegex.test(emailUser) ? "email" : "userName";
 
   let user = await User.findOne({ $or: [{ [field]: emailUser }] });
-  // let user = await User.findOne({ $or: [{ [field]: emailUser }] }).select(" -refreshToken -otp ");
   if (!user) {
     return res
       .status(codes.notFound)
@@ -218,7 +243,7 @@ export let login = asyncHandler(async (req, res) => {
       );
   }
 
-  if (!user.comparePassword(password)) {
+  if (!(await user.comparePassword(password))) {
     return res
       .status(codes.conflict)
       .json(new ApiErrorResponse("Password mismatch.", codes.conflict).res());
@@ -232,7 +257,7 @@ export let login = asyncHandler(async (req, res) => {
   res.cookie("accessToken", accessToken, cookieOptions("access"));
   res.cookie("refreshToken", refreshToken, cookieOptions("refresh"));
   await red.hSet(
-    `user:${user._id}`,
+    `user:0000`,
     "login",
     json.str({ userName: user.userName, _id: user._id })
   ); //1day
@@ -260,7 +285,7 @@ export let login = asyncHandler(async (req, res) => {
 ////////////////////////////////////////////////////////////////////////////
 
 export let profile = asyncHandler(async (req, res) => {
-  let exist = json.parse(await red.hGet(`user:${user._id}`, "profile"));
+  let exist = json.parse(await red.hGet(`user:0000`, "profile"));
   if (exist) {
     return res.status(codes.ok).json(
       new ApiResponse(`User ${user.userName} found successfully.`, codes.ok, {
@@ -285,7 +310,7 @@ export let profile = asyncHandler(async (req, res) => {
       .json(new ApiErrorResponse("Samir sir not found.", codes.notFound).res());
   }
   await red.hSet(
-    `user:${user._id}`,
+    `user:0000`,
     "profile",
     json.str({
       _id: user._id,
@@ -317,7 +342,7 @@ export let profile = asyncHandler(async (req, res) => {
 });
 /////////////////////////////////////////////////////////////
 export let logout = asyncHandler(async (req, res) => {
-  // let exist=json.parse(await red.hGet(`user:${user._id}`,"login))
+  // let exist=json.parse(await red.hGet(`user:0000`,"login))
   for (let cookie in req.cookies) {
     res.clearCookie(cookie, {
       httpOnly: true,
@@ -329,9 +354,7 @@ export let logout = asyncHandler(async (req, res) => {
 
   const keys = await red.keys("user:*");
   if (keys) {
-    let delKeys = keys.filter((key) => key !== "user:0000");
-    // await Promise.all(delKeys.map(key=>red.del(key)))
-    await red.del(...delKeys);
+    await red.del(...keys);
   }
 
   return res
@@ -380,7 +403,7 @@ export let updateProfile = asyncHandler(async (req, res) => {
 
   await user.save();
   await red.hSet(
-    `user:${user._id}`,
+    `user:0000`,
     "profile",
     json.parse({
       _id: user._id,
@@ -405,7 +428,7 @@ export let updateProfile = asyncHandler(async (req, res) => {
 ///////////////////////////////////////////////////////////
 
 export let del = asyncHandler(async (req, res) => {
-  let exist = json.parse(await red.hGet(`user:${process.env.KEY}`, "login"));
+  let exist = json.parse(await red.hGet(`user:0000`, "login"));
   let user = await User.findByIdAndDelete(req.user._id ?? exist._id);
   if (!user) {
     return res
@@ -415,8 +438,7 @@ export let del = asyncHandler(async (req, res) => {
 
   let keys = await red.get(`user:*`);
   if (keys) {
-    let delkeys = keys.filter((key) => key !== "user:0000");
-    await red.del(...delkeys);
+    await red.del(...keys);
   }
 
   return res
@@ -488,7 +510,99 @@ export let refresh = asyncHandler(async (req, res) => {
 
 /////////////////////////////////////////////////////////////////////////////////
 
+export const checkOtp = asyncHandler(async (req, res) => {
+  const { otp, email } = req.body;
+
+  const user = await User.findOne({ email });
+  // const user = await User.findOne({ email: localStorage.getItem("email") });
+  if (!user) {
+    return res
+      .status(codes.notFound)
+      .json(new ApiErrorResponse("Email not found.", codes.notFound).res());
+  }
+
+  if (!bcrypt.compare(otp, user.otp.code)) {
+    return res
+      .status(codes.conflict)
+      .json(new ApiErrorResponse("Invalid otp.", codes.conflict).res());
+  }
+
+  if (user.otp.expiry < Date.now()) {
+    return res
+      .status(codes.conflict)
+      .json(new ApiErrorResponse("OTP expired.", codes.conflict).res());
+  }
+  user.otp.verified = true;
+  user.otp.expiry = null;
+  await user.save();
+
+  return res
+    .status(codes.ok)
+    .json(new ApiResponse("OTP verification done", codes.ok).res());
+});
+//////////////////////////////////////////////////////////////////////////////
 // helper for OTP expiry time
+export const email = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res
+      .status(codes.notFound)
+      .json(new ApiErrorResponse("Email not found.", codes.notFound).res());
+  }
+
+  // generate OTP
+  const { code, hashCode } = await otp();
+
+  user.otp = {
+    code: hashCode,
+    verified: false,
+    expiry: expiry(5),
+  };
+
+  await user.save();
+
+  // send mail immediately
+  await mail({
+    to: email,
+    subject: "Mathematics for all - Access Permission",
+    text: `Your OTP is ${code}. It will expire in 5 minutes.`,
+    html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Permission</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px;">
+  <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <h2 style="color: #007bff;">Access Permission</h2>
+    <p style="font-size: 15px; color: #333;">
+      Your OTP is <b style="font-size: 18px; color: #d9534f;">${code}</b>.  
+      It will expire in <b>5 minutes</b>.
+    </p>
+    <p style="font-size: 14px; color: #555;">
+      If you did not request this reset, please ignore this email or contact our support team.
+    </p>
+    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+    <p style="font-size: 13px; color: #666;">
+      Regards,<br/>
+      <strong>Mathematics for All - Security Team</strong>
+    </p>
+  </div>
+</body>
+</html>
+`,
+  });
+
+  return res
+    .status(codes.ok)
+    .json(new ApiResponse("OTP sent to your email.", codes.ok).res());
+});
+
+////////////////////////////////////////////////////////////////////////////////
+
 export const forgotPass = asyncHandler(async (req, res) => {
   const { email } = req.body;
 

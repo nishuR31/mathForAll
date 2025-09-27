@@ -10,6 +10,8 @@ import {
   passwordLessMail,
   profile,
   refresh,
+  email,
+  checkOtp,
   register,
   reset,
   updateProfile,
@@ -21,6 +23,8 @@ let userRouter = new express.Router();
 userRouter.post("/signup", register);
 userRouter.get("/reset", auth(true), reset);
 userRouter.post("/login", auth(false), login);
+userRouter.post("/email", email);
+userRouter.post("/checkOtp", checkOtp);
 userRouter.get("/me", auth(false), profile);
 userRouter.get("/logout", auth(false), logout);
 // userRouter.get("/refresh", auth(true), refresh);

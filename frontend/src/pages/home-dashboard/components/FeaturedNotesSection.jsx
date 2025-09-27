@@ -146,7 +146,7 @@ const FeaturedNotesSection = () => {
               </div>
             ))
           ) : (
-<div className="  transition-all delay-[3s] bg-white ">
+<div className="  transition-all delay-3  ">
   <div className="flex justify-center flex-wrap animate-pulse  text-center ">
     <Icon name="Loader" size={40} className="animate-spin text-destructive hover:text-primary" onClick={()=>setAvailable(!available)} />
   </div>

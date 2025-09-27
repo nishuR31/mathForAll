@@ -36,7 +36,7 @@ const Access = () => {
     }
     setLoading(true);
     try {
-      await axios.post(`${import.meta.env.VITE_BDOMAIN}sir/forgot`, { email });
+      await axios.post(`${import.meta.env.VITE_BDOMAIN}sir/email`, { email });
       toast.success("OTP sent to email!");
       setStep("otp");
       setCount(0);
@@ -64,7 +64,7 @@ const Access = () => {
 
     setLoading(true);
     try {
-      await axios.post(`${import.meta.env.VITE_BDOMAIN}sir/otp`, {
+      await axios.post(`${import.meta.env.VITE_BDOMAIN}sir/checkOtp`, {
         email,
         otp,
       });

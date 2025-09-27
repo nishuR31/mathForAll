@@ -119,7 +119,7 @@ const ProfilePage = () => {
     }
   };
 
-  if (loading) return <p className="text-center p-4">Loading profile...</p>;
+  if (loading) return (<p className="text-center p-4">Loading profile...</p>);
   if (!user)
     return <p className="text-center p-4 text-red-500">No profile found.</p>;
 

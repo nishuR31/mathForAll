@@ -12,10 +12,10 @@ const Header = () => {
 
   const navigationItems = [
     { label: "Home", path: "/", icon: "Home" },
-    { label: "Notes", path: "/notes-library", icon: "BookOpen" },
-    { label: "Videos", path: "/video-learning-center", icon: "Play" },
+    { label: "Notes", path: "/notes-library", icon: "NotebookPen" },
+    { label: "Videos", path: "/video-learning-center", icon: "MonitorPlay" },
     { label: "Teachers", path: "/teachers-showcase", icon: "Users" },
-    { label: "Help", path: "/information-hub", icon: "HelpCircle" },
+    { label: "Help", path: "/information-hub", icon: "Info" },
     { label: "About", path: "/owner-information", icon: "UserRoundSearch" },
     { label: "Faculty", path: "/auth", icon: "ShieldUser" },
   ];

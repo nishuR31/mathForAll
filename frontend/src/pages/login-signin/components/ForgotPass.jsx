@@ -64,7 +64,8 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-card border rounded-lg shadow ">
+    <div className="pt-[50px] ">
+    <div className="m-2 max-w-md mx-auto  p-6 bg-card border rounded-lg shadow ">
       {step === 1 && (
         <>
           <h2 className="text-xl font-bold mb-4">Forgot Password</h2>
@@ -82,6 +83,11 @@ const ForgotPassword = () => {
             >
               Send OTP
             </button>
+            <p className="mt-2">
+              <Link to="/" className="text-primary hover:underline">
+                Home Page?
+              </Link>
+            </p>
             <p className="mt-2">
               <Link to="/" className="text-primary hover:underline">
                 Home Page?
@@ -143,6 +149,7 @@ const ForgotPassword = () => {
           </div>
         </>
       )}
+    </div>
     </div>
   );
 };

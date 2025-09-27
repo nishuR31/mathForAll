@@ -34,7 +34,7 @@ let userSchema = new mongoose.Schema(
     },
     photoUrl: {
       type: String,
-      default: `${process.env.FDOMAIN}/assets/images/sir.png`,
+      default: `https://drive.google.com/uc?export=view&id=1eFsrjSGz0UbJZRq5mDsUTU3qdNRl3CXe`,
       trim: true,
     },
 

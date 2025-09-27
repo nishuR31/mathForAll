@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 import Icon from "../../../components/AppIcon";
 import { toast } from "sonner";
+import axios from "axios"
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const RegisterPage = () => {
     setLoading(true);
 
     try {
+      console.table(formData)
       const res = await axios.post(
         `${import.meta.env.VITE_BDOMAIN}sir/signup`,
         formData, // this becomes req.body in backend
@@ -37,14 +39,16 @@ const RegisterPage = () => {
           headers: {
             "Content-Type": "application/json", // axios sets this by default if sending object
           },
-          withCredentials: true, // if your backend needs cookies
+          // withCredentials: true, // if your backend needs cookies
         }
       );
 
-      const data = res;
+      const data = res.data;
+      console.table({data})
+      toast.warning(data)
 
       if (!res.success) {
-        throw new Error(data?.message || "Registration failed");
+        toast.error(data?.message || "Registration failed");
       }
 
       toast.success("Account created successfully!");
@@ -142,16 +146,25 @@ const RegisterPage = () => {
           </Button>
         </form>
 
-        <p className="text-sm text-muted-foreground text-center mt-6">
+        <p className="text-sm text-muted-foreground text-center mt-2">
           Already have an account?{" "}
           <Link to="/login" className="text-primary hover:underline">
             Login here
           </Link>
         </p>
-        <p className="text-sm text-muted-foreground text-center mt-6">
+        <p className="text-sm text-muted-foreground text-center mt-2">
           <Link to="/" className="text-primary hover:underline">
             Home Page?
           </Link>
+        </p>
+        <p
+          className="text-sm text-muted-foreground text-center mt-2"
+          onClick={() => {
+            window.history?.back();
+            toast.success("Back to previous page.");
+          }}
+        >
+          Go Back?
         </p>
       </div>
     </section>

@@ -77,11 +77,11 @@ const StatsSection = () => {
 
         <div className="mt-16 bg-card border border-border rounded-lg p-8 text-center">
           <div className="max-w-3xl mx-auto">
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-gradient-to-l animate-spin from-muted via-primary to-muted rounded-full flex items-center justify-center">
+            <div className="flex h-20  justify-center mb-6">
+              <div className="absolute w-20 h-20 bg-gradient-to-l animate-spin  from-muted via-primary to-muted rounded-full flex items-center justify-center" />
+              <div className="absolute w-20 h-20 backdrop-blur-lg  rounded-full flex items-center justify-center" />
                 {/* <Icon name="Heart" size={40} color="white" className="!animate-none" /> */}
-              </div>
-                <Icon name="Heart" size={40} color="white" className=" mt-5 absolute animate-none" />
+                <Icon name="Heart" size={40} color="white"  className=" mt-5 absolute  animate-none" />
             </div>
             
             <h3 className="text-2xl lg:text-3xl font-bold text-card-foreground mb-4">

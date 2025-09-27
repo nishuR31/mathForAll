@@ -56,7 +56,7 @@ const PasswordLessPage = () => {
         >
           {loading ? "Sending..." : "Send Login Link"}
         </button>
-                <div className="mt-6 text-center text-sm text-muted-foreground">
+        <div className="mt-6 text-center text-sm text-muted-foreground">
           <p>
             Don’t have an account?{" "}
             <Link to="/register" className="text-primary hover:underline">
@@ -64,14 +64,24 @@ const PasswordLessPage = () => {
             </Link>
           </p>
           <p className="mt-2">
+            Remember Password ?{" "}
             <Link to="/login" className="text-primary hover:underline">
-              Password login?
+              login
             </Link>
           </p>
           <p className="mt-2">
             <Link to="/" className="text-primary hover:underline">
               Home Page?
             </Link>
+          </p>
+          <p
+            className="mt-2 hover:underline text-center"
+            onClick={() => {
+              window.history?.back();
+              toast.success("Back to previous page.");
+            }}
+          >
+            Go Back?
           </p>
         </div>
       </form>

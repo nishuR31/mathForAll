@@ -1,3 +1,12 @@
+need:
 - need real data of sir's journey
-- take sir's account here
-- process auth testing before hosting
+- sir's account here
+
+
+done:
+- otp
+- signup
+- backend routes
+
+error:
+- login route(postworks but not frontend)

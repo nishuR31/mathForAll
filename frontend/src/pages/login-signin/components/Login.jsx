@@ -7,6 +7,7 @@ import axios from "axios";
 
 const LoginPage = () => {
   let navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     emailUser: "",
     password: "",
@@ -25,26 +26,30 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
+      console.log(formData);
       // Replace with your actual login API endpoint
       const res = await axios.post(
         `${import.meta.env.VITE_BDOMAIN}sir/login`,
-        { formData },
+        formData,
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
 
-      if (!res.sucess) throw new Error("Login failed");
+      const data = res.data;
 
-      const data = await res.json();
+      if (!data.success) {
+        toast.error(data.message);
+      }
+
       toast.success(data.message);
       navigate("/");
       console.log("Login success:", data);
 
       // Save token in localStorage / cookies and redirect as needed
     } catch (err) {
-      console.error(err.message);
+      console.error(err);
       toast.error(`Error:${err.message}`);
     } finally {
       setLoading(false);
@@ -104,7 +109,7 @@ const LoginPage = () => {
             variant="default"
             size="lg"
             className="w-full"
-            iconName={loading ? "Spinner" : "LogIn"}
+            iconName={loading ? "Loader" : "LogIn"}
             iconPosition="left"
             disabled={loading}
           >
@@ -114,9 +119,9 @@ const LoginPage = () => {
 
         <div className="mt-6 text-center text-sm text-muted-foreground">
           <p>
-            Don’t have an account?{" "}
+            Don’t have an account{" "}
             <Link to="/register" className="text-primary hover:underline">
-              Register
+              Register?
             </Link>
           </p>
           <p className="mt-2">
@@ -124,18 +129,28 @@ const LoginPage = () => {
               to="/forgot-password"
               className="text-primary hover:underline"
             >
-              Forgot Password?
+              Password Forgot?
             </Link>
           </p>
           <p className="mt-2">
+            Password less ?{" "}
             <Link to="/password-less" className="text-primary hover:underline">
-              Password less login?
+              login
             </Link>
           </p>
           <p className="mt-2">
             <Link to="/" className="text-primary hover:underline">
               Home Page?
             </Link>
+          </p>
+          <p
+            className="mt-2 hover:underline text-center"
+            onClick={() => {
+              window.history?.back();
+              toast.success("Back to previous page.");
+            }}
+          >
+            Go Back?
           </p>
         </div>
       </div>
