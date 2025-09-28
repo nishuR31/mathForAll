@@ -148,9 +148,11 @@ export const health = asyncHandler(async (req, res) => {
     .json(new ApiResponse("Server is healthy.", codes.ok).res());
 });
 
+
 export const ping = asyncHandler(async (req, res) => {
-  return res.status(codes.ok).json(new ApiResponse("pong", codes.ok).res());
+  return res.status(codes.ok).json(new ApiResponse("Pong", codes.ok).res());
 });
+
 
 export const contact = asyncHandler(async (req, res) => {
   let { name, email, subject, message } = req.body;

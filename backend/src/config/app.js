@@ -15,7 +15,7 @@ import { fileURLToPath } from "url";
 let app = express();
 
 let corsOptions = {
-  origin: "http://localhost:5173",
+  origin: ["https://mathematics-for-all.vercel.app","http://localhost:5173"],
   credentials: true,
 };
 

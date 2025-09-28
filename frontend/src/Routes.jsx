@@ -2,22 +2,23 @@ import React from "react";
 import { BrowserRouter, Routes as RouterRoutes, Route } from "react-router-dom";
 import ScrollToTop from "components/ScrollToTop";
 import ErrorBoundary from "components/ErrorBoundary";
-import NotFound from "pages/NotFound";
+import NotFound from "./pages/NotFound";
 import HomeDashboard from "./pages/home-dashboard";
 import OwnerInformation from "./pages/owner-information";
 import VideoLearningCenter from "./pages/video-learning-center";
 import TeachersShowcase from "./pages/teachers-showcase";
 import InformationHub from "./pages/information-hub";
 import NotesLibrary from "./pages/notes-library";
-import LoginPage from "pages/login-signin/components/Login";
-import RegisterPage from "pages/login-signin/components/Register";
-import ResetPasswordPage from "pages/login-signin/components/Reset";
-import ForgotPassword from "pages/login-signin/components/ForgotPass";
-import PasswordLessPage from "pages/login-signin/components/Passless";
-import Me from "pages/login-signin";
-import Access from "pages/login-signin/components/Access";
-import ProfilePage from "pages/login-signin/components/Profile";
-import Auth from "pages/login-signin";
+import LoginPage from "./pages/login-signin/components/Login";
+import RegisterPage from "./pages/login-signin/components/Register";
+import ResetPasswordPage from "./pages/login-signin/components/Reset";
+import ForgotPassword from "./pages/login-signin/components/ForgotPass";
+import PasswordLessPage from "./pages/login-signin/components/Passless";
+// import Me from "pages/login-signin";
+import Access from "./pages/login-signin/components/Access";
+import ProfilePage from "./pages/login-signin/components/Profile";
+import Auth from "./pages/login-signin";
+import Ping from "./pages/health/Ping.jsx";
 
 const Routes = () => {
   return (
@@ -44,6 +45,7 @@ const Routes = () => {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/password-less" element={<PasswordLessPage />} />
           <Route path="/access" element={<Access />} />
+          <Route path="/ping" element={<Ping />} />
 
           <Route path="*" element={<NotFound />} />
         </RouterRoutes>
