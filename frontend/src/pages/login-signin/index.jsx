@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import axios from "axios";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -8,14 +9,36 @@ const Auth = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-      toast.warning("Permission required.");
-      navigate("/access");
-    }, 3000);
+    const init = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_BDOMAIN}sir/me`, {
+          withCredentials: true,
+        });
 
-    return () => clearTimeout(timer); // cleanup if user leaves early
-  }, [navigate]);
+        if (!res.data.success) {
+          toast.warning("Permission required.");
+          navigate("/access");
+          return;
+        }
+
+        toast.success("Welcome sir.");
+        navigate("/me");
+      } catch (err) {
+        console.error(err);
+        toast.error("Not logged in. Please login.");
+        navigate("/login");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      toast.warning("Checking permissions");
+      init();
+    }, 3000); // keep if intentional delay is desired
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background px-4">

@@ -9,8 +9,8 @@ const LoginPage = () => {
   let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    emailUser: "",
-    password: "",
+    "emailUser": "",
+    "password": "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -44,13 +44,13 @@ const LoginPage = () => {
       }
 
       toast.success(data.message);
-      navigate("/");
+      navigate("/me");
       console.log("Login success:", data);
 
       // Save token in localStorage / cookies and redirect as needed
     } catch (err) {
-      console.error(err);
       toast.error(`Error:${err.message}`);
+      console.error(`Error:${err.message}`);
     } finally {
       setLoading(false);
     }

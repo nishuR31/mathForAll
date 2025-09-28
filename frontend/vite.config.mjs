@@ -13,10 +13,14 @@ export default defineConfig({
   },
   plugins: [tsconfigPaths(), react(), tagger()],
   server: {
-    port: "4028",
-    host: "0.0.0.0",
-    strictPort: true,
-    allowedHosts: [".amazonaws.com", ".builtwithrocket.new"],
+    port: "5173",
+    proxy: {
+      "/api": {
+        target: "http://localhost:4029",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, "/api/v1"),
+      },
+    },
   },
 });
 

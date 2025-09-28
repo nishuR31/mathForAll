@@ -196,24 +196,25 @@ export let register = asyncHandler(async (req, res) => {
 /////////////////////////////////////////////////////////////////
 
 export let login = asyncHandler(async (req, res) => {
-  let exist = json.parse(await red.hGet(`user:0000`, "login"));
-  console.log(req.user, exist);
-  if (req.user || exist) {
+
+  if (req.user) {
     return res.status(codes.ok).json(
       new ApiResponse(
         `User already logged in, welcome ${
-          req.user.userName ?? exist.userName
+          req.user.userName
         }`,
         codes.ok,
         {
           user: {
-            _id: req.user._id ?? exist._id,
-            userName: req.user.userName ?? exist.userName,
+            _id: req.user._id ,
+            userName: req.user.userName ,
           },
         }
       ).res()
     );
   }
+
+  console.log("not found cache")
   let { emailUser, password } = req.body;
   console.log("REQ.BODY:", req.body);
 
@@ -256,11 +257,7 @@ export let login = asyncHandler(async (req, res) => {
 
   res.cookie("accessToken", accessToken, cookieOptions("access"));
   res.cookie("refreshToken", refreshToken, cookieOptions("refresh"));
-  await red.hSet(
-    `user:0000`,
-    "login",
-    json.str({ userName: user.userName, _id: user._id })
-  ); //1day
+   //1day
   return res.status(codes.ok).json(
     new ApiResponse(
       `Welcome back ${user.userName}. Logging you in.`,
@@ -285,10 +282,11 @@ export let login = asyncHandler(async (req, res) => {
 ////////////////////////////////////////////////////////////////////////////
 
 export let profile = asyncHandler(async (req, res) => {
-  let exist = json.parse(await red.hGet(`user:0000`, "profile"));
+  let exist = JSON.parse(await red.hGet(`user:0000`, "profile"));
+  console.table(exist.userName)
   if (exist) {
     return res.status(codes.ok).json(
-      new ApiResponse(`User ${user.userName} found successfully.`, codes.ok, {
+      new ApiResponse(`Cached User ${exist.userName} found successfully.`, codes.ok, {
         user: {
           _id: exist._id,
           userName: exist.userName,
@@ -376,7 +374,7 @@ export let updateProfile = asyncHandler(async (req, res) => {
       );
   }
 
-  let { firstName, email, lastName } = req.body;
+  let { firstName,email,lastName } = req.body;
 
   let user = await User.findById(req.user._id).select(
     "-password -refreshToken -otp"
@@ -394,26 +392,24 @@ export let updateProfile = asyncHandler(async (req, res) => {
   if (firstName && user.firstName !== firstName) {
     user.firstName = firstName;
   }
-  if (email && user.email !== email) {
-    user.email = email;
-  }
   if (lastName !== undefined && user.lastName !== lastName) {
     user.lastName = lastName;
+  }
+  if (email && user.email !== email) {
+    user.email = email;
   }
 
   await user.save();
   await red.hSet(
     `user:0000`,
     "profile",
-    json.parse({
+    JSON.stringify({
       _id: user._id,
       userName: user.userName,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-
       photoUrl: user.photoUrl,
-
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     })
