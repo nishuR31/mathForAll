@@ -4,7 +4,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tagger from "@dhiwise/component-tagger";
 export default defineConfig({
   base: "/",
-
+  build: {
+    chunkSizeWarningLimit: 2000,
+  },
   plugins: [tsconfigPaths(), react(), tagger()],
   server: {
     port: "5173",
