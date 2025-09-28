@@ -4,15 +4,15 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tagger from "@dhiwise/component-tagger";
 export default defineConfig({
   build: {
-    outDir: "dist",
-    base: "/",
+    // outDir: "dist",
+    // base: "/",
 
     chunkSizeWarningLimit: 2000,
   },
   plugins: [tsconfigPaths(), react(), tagger()],
-  server: {
-    port: "5173",
-  },
+  // server: {
+  //   port: "5173",
+  // },
 });
 
 // https://vitejs.dev/config/
