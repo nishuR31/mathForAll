@@ -4,12 +4,30 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tagger from "@dhiwise/component-tagger";
 
 // https://vitejs.dev/config/
+// export default defineConfig({
+//   // This changes the out put dir from dist to build
+//   // comment this out if that isn't relevant for your project
+//   build: {
+//     outDir: "build",
+//      base: "/",
+//     chunkSizeWarningLimit: 2000,
+//   },
+//   plugins: [tsconfigPaths(), react(), tagger()],
+//   server: {
+//     port: "5173",
+//     proxy: {
+//       "/api": {
+//         target: "http://localhost:4029",
+//         changeOrigin: true,
+//         rewrite: (path) => path.replace(/^\/api/, "/api/v1"),
+//       },
+//     },
+//   },
+// });
+
 export default defineConfig({
-  // This changes the out put dir from dist to build
-  // comment this out if that isn't relevant for your project
+  base: "/",
   build: {
-    outDir: "build",
-     base: "/",
     chunkSizeWarningLimit: 2000,
   },
   plugins: [tsconfigPaths(), react(), tagger()],
