@@ -242,9 +242,9 @@ const ProfilePage = () => {
                   <Icon
                     name="SquarePen"
                     size={24}
-                    className="text-accent-foreground hover:animate-pulse"
+                    className="text-accent-foreground hidden md:block hover:animate-pulse"
                   />
-                  <p className="pl-2 hidden sm:block">Edit Profile</p>
+                  <p className="pl-2 ">Edit Profile</p>
                 </Button>
 
                 <Button
@@ -256,9 +256,9 @@ const ProfilePage = () => {
                   <Icon
                     name="Settings"
                     size={24}
-                    className="text-accent-foreground hover:animate-spin"
+                    className="text-accent-foreground hidden md:block hover:animate-spin"
                   />
-                  <p className="pl-2 hidden sm:block">Reset Password</p>
+                  <p className="pl-2 ">Reset Password</p>
                 </Button>
 
                 <Button
@@ -272,9 +272,9 @@ const ProfilePage = () => {
                   <Icon
                     name="Home"
                     size={24}
-                    className="text-accent-foreground hover:animate-pulse"
+                    className="text-accent-foreground hidden md:block  hover:animate-pulse"
                   />
-                  <p className="pl-2 hidden sm:block">Home</p>
+                  <p className="pl-2 ">Home</p>
                 </Button>
 
                 <div className="flex flex-wrap flex-row justify-around">
@@ -287,9 +287,9 @@ const ProfilePage = () => {
                     <Icon
                       name="RefreshCw"
                       size={24}
-                      className="text-accent-foreground hover:animate-spin "
+                      className="text-accent-foreground hidden md:block  hover:animate-spin "
                     />
-                    <p className="pl-2 hidden sm:block">Refresh Videos</p>
+                    <p className="pl-2 ">Refresh Videos</p>
                   </Button>
 
                   <Button
@@ -301,9 +301,9 @@ const ProfilePage = () => {
                     <Icon
                       name="RefreshCw"
                       size={24}
-                      className="text-accent-foreground hover:animate-spin"
+                      className="text-accent-foreground hidden md:block  hover:animate-spin"
                     />
-                    <p className="pl-2 hidden sm:block">Refresh Channel</p>
+                    <p className="pl-2 ">Refresh Channel</p>
                   </Button>
                 </div>
                 <div className="flex flex-wrap  flex-row justify-around">
@@ -316,9 +316,9 @@ const ProfilePage = () => {
                     <Icon
                       name="LogOut"
                       size={24}
-                      className="text-accent-foreground hover:animate-pulse"
+                      className="text-accent-foreground hidden md:block  hover:animate-pulse"
                     />
-                    <p className="pl-2 hidden sm:block">Logout</p>
+                    <p className="pl-2 ">Logout</p>
                   </Button>
                   <Button
                     type="button"
@@ -329,9 +329,9 @@ const ProfilePage = () => {
                     <Icon
                       name="Trash"
                       size={24}
-                      className="text-accent-foreground hover:animate-pulse"
+                      className="text-accent-foreground hidden md:block  hover:animate-pulse"
                     />
-                    <p className="pl-2 hidden sm:block">Delete Account</p>
+                    <p className="pl-2 ">Delete Account</p>
                   </Button>
                 </div>
               </div>
