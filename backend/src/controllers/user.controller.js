@@ -283,7 +283,6 @@ export let login = asyncHandler(async (req, res) => {
 
 export let profile = asyncHandler(async (req, res) => {
   let exist = JSON.parse(await red.hGet(`user:0000`, "profile"));
-  console.table(exist.userName)
   if (exist) {
     return res.status(codes.ok).json(
       new ApiResponse(`Cached User ${exist.userName} found successfully.`, codes.ok, {
